@@ -3,3 +3,30 @@
 body {
 	padding-top: 80px;
 }
+
+.gameview {
+	height: 500px;
+	width: 760px;
+	background-image: url(../images/bg.jpg);
+}
+
+.gameview .btn-start {
+	position: absolute;
+	
+	left: 50%;	
+	bottom: 33px;
+	margin-left: -86px;
+	
+	height: 78px;
+	width: 192px;
+	
+	background-image: url(../images/btn.gif);
+}
+
+.gameview .select-zone {
+	position: absolute;
+	width: 100%;
+	bottom: 0px;
+	color: yellow;
+    text-align: center;
+}

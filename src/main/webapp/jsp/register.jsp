@@ -9,69 +9,47 @@
 	
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+	
+	<link href="/css/jquery.loadmask.css" rel="stylesheet">
+	
 	<link href="/css/s4game-login.css" rel="stylesheet">
 	<link href="/css/s4game-footer.css" rel="stylesheet">
 	
-	<title>登录</title>
+	<title>用户注册</title>
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">简单游戏</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
-          <ul class="nav navbar-nav">
-            <li><a href="/">首页</a></li>
-            <li><a href="/game">游戏</a></li>
-            <li><a href="/recharge">充值</a></li>
-            <li><a href="/about">关于</a></li>
-          </ul>
-          <form id="form" action="" class="navbar-form navbar-right" role="form">
-	          <div class="form-group">
-	            
-	          </div>
-	          
-	          <a type="button" class="btn btn-primary" href="/view/login">登录</a>
-	          <a type="button" class="btn btn-success" href="/view/register">快速注册</a>
-	      </form>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+	<%@ include file="nav.jsp"%>
 
-	<div class="container">
+	<div class="container mask">
 	
-		<form class="form-login" data-toggle="validator" role="form">
+		<form id="registerForm" class="form-login" data-toggle="validator" role="form">
 			<h2 class="form-login-heading">用户注册</h2>
 			
 			<div class="form-group">
 				<input id="account" type="text" class="form-control" placeholder="请输入常用邮箱/电话" required autofocus>
+				<div class="help-block with-errors"></div>
 			</div>
 			<br />
 			
 			<div class="form-group">
 				<input id="password" type="password" class="form-control" placeholder="请输入密码" required>
+				<div class="help-block with-errors"></div>
 			</div>
 			<br />
 			
 			<div class="form-group">
-				<input id="passwordConfirm" type="password" class="form-control" placeholder="请确认密码" required>
+				<input id="passwordConfirm" type="password" class="form-control" data-match="#password" data-match-error="两次密码输入不一致" placeholder="请确认密码" required>
+				<div class="help-block with-errors"></div>
 			</div>
 			<br />
 			
-			<button class="btn btn-lg btn-success btn-block" id="registerBtn" type="button">快速注册</button>
+			<button class="btn btn-lg btn-success btn-block" id="registerBtn" type=button>快速注册</button>
 		</form>
 	</div>
 	
 	<%@ include file="footer.jsp"%>
-	<script src="/js/jquery.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/validator.min.js"></script>
+	
+	<script src="/js/require.js" data-main="js/s4game/user"></script>
+	
 </body>
 </html>

@@ -12,7 +12,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">首页</a></li>
+            <li><a href="/">首页</a></li>
             <li><a href="/game">游戏</a></li>
             <li><a href="/recharge">充值</a></li>
             <li><a href="/about">关于</a></li>
@@ -23,8 +23,8 @@
 	            
 	          </div>
 	          
-	          <a type="button" class="btn btn-primary" href="/view/login">登录</a>
-	          <a type="button" class="btn btn-success" href="/view/register">快速注册</a>
+	          <a type="button" class="btn btn-primary" href="/login">登录</a>
+	          <a type="button" class="btn btn-success" href="/register">快速注册</a>
 	      </form>
         </div><!--/.nav-collapse -->
       </div>

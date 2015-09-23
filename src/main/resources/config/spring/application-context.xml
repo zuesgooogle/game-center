@@ -13,8 +13,11 @@
 	
 	<!-- static view controller -->
 	<mvc:view-controller path="/" view-name="index"/>
-	<mvc:view-controller path="/view/login" view-name="login"/>
-	<mvc:view-controller path="/view/register" view-name="register"/>
+	<mvc:view-controller path="/login" view-name="login"/>
+	<mvc:view-controller path="/register" view-name="register"/>
+	
+	<mvc:view-controller path="/game" view-name="game"/>
+	<mvc:view-controller path="/selectzone" view-name="selectzone"/>
 	<mvc:view-controller path="/about" view-name="about"/>
 	
 	

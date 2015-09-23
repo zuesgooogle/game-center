@@ -22,9 +22,10 @@
     </div> <!-- /container -->
 		
 	<%@ include file="footer.jsp"%>
-		
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+
+	<input type="hidden" id="navTag" value="0"></input>	
+    <script src="/js/require.js" data-main="js/main"></script>
+	
 </body>
 
 </html>

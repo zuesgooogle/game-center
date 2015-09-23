@@ -1,7 +1,11 @@
 package com.simplegame.platform.bus.user.controller;
 
-import org.springframework.stereotype.Controller;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.alibaba.fastjson.JSONObject;
 
 /**
  *
@@ -9,12 +13,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @sine   2015年9月22日 下午3:11:20
  *
  */
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController {
 
-    @RequestMapping("/login")
-    public String about() {
-        return "about";
+    private Logger LOG = LogManager.getLogger(getClass());
+    
+    @RequestMapping("/register")
+    public String register(String account, String password) {
+        JSONObject result = new JSONObject();
+        
+        LOG.info("account: {}, password: {}", account, password);
+        
+        return result.toJSONString();
     }
 }
