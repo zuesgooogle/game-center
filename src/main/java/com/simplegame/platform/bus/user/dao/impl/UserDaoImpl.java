@@ -22,7 +22,7 @@ public class UserDaoImpl implements IUserDao {
     
     @Override
     public void insert(User user) {
-
+        sqlSession.insert("insertUser", user);
     }
 
     @Override
@@ -43,6 +43,11 @@ public class UserDaoImpl implements IUserDao {
         return null;
     }
 
+    @Override
+    public User selectUserByAccount(String account) {
+        return sqlSession.selectOne("selectUserByAccount", account);
+    }
+    
     @Override
     public User selectUserByAccountAndPassword(String account, String password) {
         // TODO Auto-generated method stub

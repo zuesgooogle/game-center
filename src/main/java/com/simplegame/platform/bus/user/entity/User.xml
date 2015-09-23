@@ -25,6 +25,16 @@
 		from user where id = #{id}
 	</select>
 	
+	<select id="selectUserByAccount" resultMap="user" parameterType="String">
+		select
+		id
+		,account
+		,password
+		,create_time
+		from user where account = #{account}
+	</select>
+	
+	
 	<select id="selectUserByAccountAndPassword" resultMap="user" parameterType="com.simplegame.platform.bus.user.entity.User">
 		select
 		id

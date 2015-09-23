@@ -19,6 +19,8 @@ public interface IUserDao {
     
     public User selectUserById(String userId);
     
+    public User selectUserByAccount(String account);
+    
     public User selectUserByAccountAndPassword(String account, String password);
 
 }
