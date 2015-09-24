@@ -27,7 +27,7 @@
   				<div class="gameview">
   					<div class="btn-start"></div>
   					<div class="select-zone">
-  						您最近登录是[1服] <a class="btn btn-link" href="/selectzone">重新选区</a>
+  						您最近登录是[1服] <a class="btn btn-link" href="/game/selectzone">重新选区</a>
   					</div>
   				</div>
   			</div>

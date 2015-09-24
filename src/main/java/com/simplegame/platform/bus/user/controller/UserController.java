@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
-import com.simplegame.platform.bus.user.entity.User;
 import com.simplegame.platform.bus.user.service.IUserService;
 
 /**
@@ -26,19 +25,32 @@ public class UserController {
     @Resource
     private IUserService userService;
     
+//    @RequestMapping("/login")
+//    public String login(String username, String password) {
+//        JSONObject result = new JSONObject();
+//
+//        LOG.info("username: {}, password: {}", username, password);
+//        
+//        result.put("ret", 0);
+//        
+//        return result.toJSONString();
+//    }
+    
     @RequestMapping("/register")
-    public String register(String account, String password) {
+    public String register(String username, String password) {
         JSONObject result = new JSONObject();
         
-        boolean exist = userService.exist(account);
+        boolean exist = userService.exist(username);
         if( exist ) {
             result.put("ret", -1);
             result.put("msg", "账户已存在");
+            
+            return result.toJSONString();
         }
         
-        User user = userService.createUser(account, password);
+        userService.createUser(username, password);
         
-        LOG.info("account: {}, password: {}, exist: {}", account, password, exist);
+        LOG.info("username: {}, password: {}, exist: {}", username, password, exist);
         
         result.put("ret", 0);
         

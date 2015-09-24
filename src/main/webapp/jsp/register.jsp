@@ -26,7 +26,7 @@
 			<h2 class="form-login-heading">用户注册</h2>
 			
 			<div class="form-group">
-				<input id="account" type="text" class="form-control" placeholder="请输入常用邮箱/电话" required autofocus>
+				<input id="username" type="text" class="form-control" placeholder="请输入常用邮箱/电话" required autofocus>
 				<div class="help-block with-errors"></div>
 			</div>
 			<br />

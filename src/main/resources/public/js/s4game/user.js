@@ -18,8 +18,12 @@ define('user', ['jquery', 'bootstrap', 'validator', 'loadmask'], function($) {
 	var user = {};
 	
 	$(function() {
+		$('#loginBtn').click(function() {
+			user.login();
+		});
+		
 		$('#registerBtn').click(function() {
-			user.doRegister();
+			user.register();
 		});
 	});
 	
@@ -32,7 +36,45 @@ define('user', ['jquery', 'bootstrap', 'validator', 'loadmask'], function($) {
 			$('.mask').unmask();
 		},
 			
-		doRegister: function() {
+		login: function() {
+			var that = this;
+			
+			var form = $('#loginForm');
+			form.validator('validate');
+			
+			var errors = form.find('div.has-error').length;
+			if( errors > 0 ) {
+				return;
+			}
+			
+			var data = {
+					username : $('#username').val(),
+					password: $('#password').val()
+			};
+			
+			$.ajax({
+				url:  '/login',
+				type: 'POST',
+				data: data,
+				beforeSend: function(xhr) {
+					that.mask();
+				},
+				complete: function(result) {
+					that.unmask();
+				}
+			})
+			.done(function(result) {
+				var json = jQuery.parseJSON( result );
+				if( json.ret == 0) {
+					
+				} else {
+					
+				}
+				console.log(json);
+			});
+		},
+		
+		register: function() {
 			var that = this;
 			
 			var form = $('#registerForm');
@@ -44,7 +86,7 @@ define('user', ['jquery', 'bootstrap', 'validator', 'loadmask'], function($) {
 			}
 			
 			var data = {
-					account : $('#account').val(),
+					username : $('#username').val(),
 					password: $('#password').val()
 			};
 			

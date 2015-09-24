@@ -19,10 +19,10 @@
 
 	<div class="container">
 	
-		<form class="form-login" data-toggle="validator" role="form">
+		<form id="loginForm" class="form-login" data-toggle="validator" role="form">
 			<h2 class="form-login-heading">用户登录</h2>
 			<div class="form-group">
-				<input id="account" type="text" class="form-control" placeholder="请输入账号" required autofocus>
+				<input id="username" type="text" class="form-control" placeholder="请输入账号" required autofocus>
 			</div>
 			<br/>
 			<div class="form-group">
@@ -35,6 +35,6 @@
 	
 	<%@ include file="footer.jsp"%>
 	
-	<script src="/js/require.js" data-main="js/main"></script>
+	<script src="/js/require.js" data-main="js/s4game/user"></script>
 </body>
 </html>

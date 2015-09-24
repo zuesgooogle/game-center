@@ -44,12 +44,12 @@ public class UserDaoImpl implements IUserDao {
     }
 
     @Override
-    public User selectUserByAccount(String account) {
-        return sqlSession.selectOne("selectUserByAccount", account);
+    public User selectUserByUsername(String username) {
+        return sqlSession.selectOne("selectUserByUsername", username);
     }
     
     @Override
-    public User selectUserByAccountAndPassword(String account, String password) {
+    public User selectUserByUsernameAndPassword(String account, String password) {
         // TODO Auto-generated method stub
         return null;
     }
