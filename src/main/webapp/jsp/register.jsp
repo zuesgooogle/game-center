@@ -6,12 +6,9 @@
 	<meta http-equiv="Cache-Control" content="no-cache">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
-	
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
-	
 	<link href="/css/jquery.loadmask.css" rel="stylesheet">
-	
 	<link href="/css/s4game-login.css" rel="stylesheet">
 	<link href="/css/s4game-footer.css" rel="stylesheet">
 	
@@ -50,6 +47,5 @@
 	<%@ include file="footer.jsp"%>
 	
 	<script src="/js/require.js" data-main="js/s4game/user"></script>
-	
 </body>
 </html>

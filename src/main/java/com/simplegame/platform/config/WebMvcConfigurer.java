@@ -15,17 +15,6 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        /**
-         * <!-- static view controller
-    <mvc:view-controller path="/" view-name="index"/>
-    <mvc:view-controller path="/login" view-name="login"/>
-    <mvc:view-controller path="/register" view-name="register"/>
-    
-    <mvc:view-controller path="/game" view-name="game"/>
-    <mvc:view-controller path="/selectzone" view-name="selectzone"/>
-    <mvc:view-controller path="/about" view-name="about"/>
-     -->
-         */
         
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/game").setViewName("game");
@@ -34,8 +23,7 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
         
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/register").setViewName("register");
-        
-        
+        registry.addViewController("/recharge").setViewName("recharge");
+
     }
-    
 }

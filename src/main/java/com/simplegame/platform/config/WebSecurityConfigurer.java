@@ -44,7 +44,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         http.csrf().disable() //取消页面token
         
             .authorizeRequests()
-                .antMatchers("/", "/game", "/about", "/user/register", "/register" ).permitAll()
+                .antMatchers("/", "/game", "/recharge", "/about", "/user/register", "/register" ).permitAll()
             
                 .anyRequest().authenticated()
                 
@@ -54,13 +54,13 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
             
         .formLogin()
             .loginPage("/login")
-            //.loginProcessingUrl("/user/login")
-            
             .successHandler(new LoginSuccessHandler())
             .failureHandler(new LoginFailureHandler())
             .permitAll()
             .and()
-        .logout().permitAll();
+        .logout()
+            .logoutUrl("/logout")
+            .permitAll();
 
     }
 

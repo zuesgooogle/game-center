@@ -9,11 +9,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-select.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+	
 	<link href="/css/s4game-main.css" rel="stylesheet">
 	<link href="/css/s4game-footer.css" rel="stylesheet">
 	
-	<title>游戏 </title>
+	<title>充值 </title>
 </head>
 
 <body>
@@ -29,12 +31,16 @@
 				<div class="panel-body">
 					<form id="serverForm" role="form" class="form-horizontal selectzone">
 						<fieldset>
-							<legend>推荐服务</legend>
+							<legend>选服列表</legend>
 							<div class="form-group">
-								<div class="col-sm-4">
-									<button type="button" class="btn btn-block btn-success btn-lg">进入游戏</button>
+								<label class="col-sm-3 control-label">请选择充值服</label> 
+								<div class="col-sm-8">
+									<select class="selectpicker" data-width="100%">
+									    <option>Mustard</option>
+									    <option>Ketchup</option>
+									    <option>Relish</option>
+									</select>
 								</div>
-								<label class="col-sm-6">我们根据您的网络环境推荐左侧服务器</label> 
 							</div>
 							
 							<div class="form-group"></div>
@@ -81,7 +87,7 @@
 			
 	<%@ include file="footer.jsp"%>
 		
-	<script src="/js/require.js" data-main="/js/main"></script>
+	<script src="/js/require.js" data-main="js/s4game/recharge"></script>
 </body>
 
 </html>

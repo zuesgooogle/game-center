@@ -30,3 +30,12 @@ body {
 	color: yellow;
     text-align: center;
 }
+
+.selectzone {
+	
+}
+
+.selectzone legend {
+	color: #3c763d;
+	font-weight:bold;
+}
