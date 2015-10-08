@@ -25,17 +25,6 @@ public class UserController {
     @Resource
     private IUserService userService;
     
-//    @RequestMapping("/login")
-//    public String login(String username, String password) {
-//        JSONObject result = new JSONObject();
-//
-//        LOG.info("username: {}, password: {}", username, password);
-//        
-//        result.put("ret", 0);
-//        
-//        return result.toJSONString();
-//    }
-    
     @RequestMapping("/register")
     public String register(String username, String password) {
         JSONObject result = new JSONObject();

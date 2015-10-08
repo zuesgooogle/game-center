@@ -35,7 +35,7 @@ define('user', ['jquery', 'bootbox', 'utils', 'bootstrap', 'validator' ], functi
 		});
 	});
 	
-	user = {
+	user = {	
 			
 		login: function() {
 			var that = this;
@@ -69,18 +69,14 @@ define('user', ['jquery', 'bootbox', 'utils', 'bootstrap', 'validator' ], functi
 				if( json.ret == 0) {
 					window.location.href = "/game";
 				} else {
-					var html = '<div class="form-group has-error">' +
-								  	'<div class="help-block with-errors">'+
-								  		'<ul class="list-unstyled">' +
-								  			'<li>您输入的密码不正确，原因可能是：</li>' + 
-								  			'<li>忘记密码；账号输入有误；</li>' +
-								  			'<li>未区分字母大小写；未开启小键盘</li>' +
-								  		'</ul>'
-								  	'</div>' +
-								'</div>';
+					var $error = $(that.getErrorTpl());
+					$error.find('ul').html('<li>您输入的密码不正确，原因可能是：</li>' + 
+				  			  '<li>忘记密码；账号输入有误；</li>' +
+				  			  '<li>未区分字母大小写；未开启小键盘</li>'
+				  			);
 					
 					bootbox.dialog({
-					  message: html,
+					  message: $error,
 					  buttons: {
 						  danger: {
 						      label: "确定",
@@ -103,29 +99,54 @@ define('user', ['jquery', 'bootbox', 'utils', 'bootstrap', 'validator' ], functi
 				return;
 			}
 			
+			var username = $('#username').val();
 			$.ajax({
 				url:  '/user/register',
 				type: 'POST',
 				data: {
-					username: $('#username').val(),
+					username: username,
 					password: $('#password').val()
 				},
 				beforeSend: function(xhr) {
-					that.mask();
+					utils.mask();
 				},
 				complete: function() {
-					that.unmask();
+					utils.unmask();
 				}
 			})
 			.done(function(result) {
 				var json = jQuery.parseJSON( result );
 				if( json.ret == 0) {
-					
+					bootbox.alert('注册成功，立即登录体验！', function() {
+						window.location.href = "/login";
+					});
 				} else {
+					var $error = $(that.getErrorTpl());
+					$error.find('ul').html('<li>账号已存在，可以尝试：</li>' + 
+				  			  '<li>'+ username +'123；</li>' +
+				  			  '<li>'+ username +'abc；</li>'
+				  			);
+
 					
+					bootbox.dialog({
+					  message: $error,
+					  buttons: {
+						  danger: {
+						      label: "确定",
+						      className: "btn-danger"
+						  }
+					  }
+					});
 				}
-				console.log(json);
 			});
+		},
+		
+		getErrorTpl: function() {
+			return '<div class="form-group has-error">' +
+						  	'<div class="help-block with-errors">'+
+								'<ul class="list-unstyled"></ul>' +
+							'</div>' +
+				   '</div>';
 		}
 	};
 	
