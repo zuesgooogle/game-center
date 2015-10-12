@@ -37,18 +37,26 @@ define(['jquery', 'bootbox', 'utils', 'select', 'bootstrap', 'validator'], funct
 		prepare: function() {
 			var that = this;
 			
+			if( !this.isLogin() ) {
+				this.error('请先登录！');
+				return;
+			}
+			
+			var rechargeForm = $('#rechargeForm');
+			
 			var price = $('input:radio[name="priceRadio"]:checked').val();
 			if( price == null ) {
-				that.error("请选择充值金额！");
+				this.error("请选择充值金额！");
 				return;
 			}
 			
 			var type = $('input:radio[name="typeRadio"]:checked').val();
 			if( type == null ) {
-				that.error("请选择充值方式！");
+				this.error("请选择充值方式！");
 				return;
 			}
 			
+			rechargeForm.submit();
 		},
 		
 		error: function(msg) {
@@ -61,6 +69,12 @@ define(['jquery', 'bootbox', 'utils', 'select', 'bootstrap', 'validator'], funct
 				  }
 			  }
 			});
+		},
+		
+		isLogin() {
+			var loginuser = $('#loginuser');
+			
+			return loginuser != null && loginuser.val() != '';
 		}
 		
 	};

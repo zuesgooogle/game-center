@@ -33,13 +33,13 @@
             			<input class="form-control selectzone" type="text" value="1RMB = 100元宝" readonly >					
 					</div>
 
-					<form id="payForm" role="form" data-toggle="validator" class="form-horizontal selectzone">
+					<form id="rechargeForm" action="recharge/detail" method="post" role="form" data-toggle="validator" class="form-horizontal selectzone">
 						<fieldset>
 							<legend>区服列表</legend>
 							<div class="form-group">
 								<label class="col-sm-3 control-label">请选择充值服</label> 
 								<div class="col-sm-8">
-									<select class="selectpicker" data-width="100%">
+									<select name="serverId" class="selectpicker" data-width="100%">
 									    <option value="1">1服</option>
 									    <option value="2">2服</option>
 									    <option value="3">3服</option>

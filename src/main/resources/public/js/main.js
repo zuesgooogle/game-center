@@ -14,6 +14,6 @@ require.config({
 　　}
 });
 
-require(['jquery', 'bootstrap', 'ui', 'bootstrap-select'], function ($, bootstrap, utils){
+require(['jquery', 'bootstrap', 'utils', 'bootstrap-select'], function ($, bootstrap, utils){
 	utils.navActive();
 });

@@ -22,6 +22,7 @@
 
 		  
 		  <c:if test="${pageContext.request.userPrincipal.name != null}">
+		  	  <input type="hidden" id="loginuser" value="${pageContext.request.userPrincipal.name}">
 			  <ul class="nav navbar-nav navbar-right">
 			  	<li class="dropdown">
 	                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${pageContext.request.userPrincipal.name} <span class="caret"></span></a>
@@ -33,6 +34,7 @@
 		  </c:if>
 		  
 		  <c:if test="${pageContext.request.userPrincipal.name == null}">
+		  	  <input type="hidden" id="loginuser" value="">
 	          <form id="form" action="" class="navbar-form navbar-right" role="form">
 		          <div class="form-group">
 		            
