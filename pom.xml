@@ -14,7 +14,9 @@
 
 
 	<properties>
-		<finalName>deploy-server</finalName>
+		<main.basedir>${basedir}/../..</main.basedir>
+
+		<finalName>game-platform</finalName>
 
 		<appassembler.target>${project.build.directory}/appassembler</appassembler.target>
 		<appassembler.assemble.directory>${appassembler.target}/jsw/${finalName}</appassembler.assemble.directory>
@@ -60,8 +62,8 @@
 
 							<daemons>
 								<daemon>
-									<id>deploy-server</id>
-									<mainClass>com.simplegame.deploy.Application</mainClass>
+									<id>game-platform</id>
+									<mainClass>com.simplegame.platform.GamePlatform</mainClass>
 									<generatorConfigurations>
 										<generatorConfiguration>
 											<generator>jsw</generator>
@@ -129,6 +131,11 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -179,10 +186,42 @@
 			<artifactId>tomcat-embed-jasper</artifactId>
 			<scope>provided</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-el</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-logging-juli</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-websocket</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>el-api</artifactId>
+			<version>2.2</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -209,6 +248,13 @@
 			<artifactId>core</artifactId>
 			<version>3.2.0</version>
 		</dependency>
+
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.10</version>
+		</dependency>
+
 
 	</dependencies>
 

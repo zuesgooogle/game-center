@@ -8,7 +8,7 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageOutputStream;
 
-import sun.misc.BASE64Encoder;
+import org.apache.tomcat.util.codec.binary.Base64;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -23,7 +23,6 @@ import com.google.zxing.common.BitMatrix;
  */
 public class QRCodeUtils {
 
-    @SuppressWarnings("restriction")
     public static String createQRCode(String content) {
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
 
@@ -42,8 +41,7 @@ public class QRCodeUtils {
             BufferedImage image = ImageUtils.toBufferedImage(bitMatrix);
             ImageIO.write(image, "JPG", imOut);
 
-            BASE64Encoder encoder = new BASE64Encoder();
-            return encoder.encode(bs.toByteArray());
+            return Base64.encodeBase64String(bs.toByteArray());
             
         } catch (Exception e) {
             e.printStackTrace();

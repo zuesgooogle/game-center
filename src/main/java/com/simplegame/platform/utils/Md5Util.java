@@ -90,9 +90,4 @@ public class Md5Util {
 		int k = i % 16;
 		return hexDigits[j] + hexDigits[k];
 	}
-
-	public static void main(String[] paramArrayOfString) {
-
-		
-	}
 }
