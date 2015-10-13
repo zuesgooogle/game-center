@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.simplegame.platform.utils.QRCodeUtils;
+
 /**
  *
  * @Author zeusgooogle@gmail.com
@@ -14,13 +16,12 @@ import org.springframework.web.servlet.ModelAndView;
  *
  */
 @Controller
-@RequestMapping("/recharge")
 public class RechargeController {
 
 	public final Logger LOG = LogManager.getLogger(getClass());
 	
 	@PreAuthorize("hasAnyRole('USER')")
-    @RequestMapping("/detail")
+    @RequestMapping("/rechargedetail")
     public ModelAndView detail(int serverId, int priceRadio, String typeRadio) {
 		LOG.info("serverId: {}, price: {}, type: {}", serverId, priceRadio, typeRadio);
 		
@@ -28,6 +29,9 @@ public class RechargeController {
 		view.addObject("serverId", serverId);
 		view.addObject("price", priceRadio);
 		view.addObject("type", typeRadio);
+		
+		String qrcode = QRCodeUtils.createQRCode("serverId: " + serverId + ", price: " + priceRadio + ", type: " + typeRadio);
+		view.addObject("qrcode", qrcode);
 		
         return view;
     }

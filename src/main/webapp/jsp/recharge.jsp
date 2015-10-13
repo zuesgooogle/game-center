@@ -33,7 +33,7 @@
             			<input class="form-control selectzone" type="text" value="1RMB = 100元宝" readonly >					
 					</div>
 
-					<form id="rechargeForm" action="recharge/detail" method="post" role="form" data-toggle="validator" class="form-horizontal selectzone">
+					<form id="rechargeForm" action="rechargedetail" method="post" role="form" data-toggle="validator" class="form-horizontal selectzone">
 						<fieldset>
 							<legend>区服列表</legend>
 							<div class="form-group">
@@ -129,7 +129,7 @@
 							<legend>支付方式</legend>
 					    	<label class="radio-inline">
 					        	<input type="radio" name="typeRadio" value="weixin" required> 微信
-					        	<img alt="" src="images/pay/weixin.jpg">
+					        	<img alt="" src="images/pay/weixin.png">
 					      	</label>
 					      	<label class="radio-inline">
 					        	<input type="radio" name="typeRadio" value="zhifubao" required> 支付宝
@@ -137,7 +137,7 @@
 					      	</label>
 						</fieldset>
 						
-						<br/>
+						<br/><br/><br/>
 						<button class="btn btn-success btn-lg btn-block" id="payBtn" type="button">支付</button>
 					</form>
 			</div>	

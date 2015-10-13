@@ -67,7 +67,7 @@ define('user', ['jquery', 'bootbox', 'utils', 'bootstrap', 'validator' ], functi
 			.done(function(result) {
 				var json = jQuery.parseJSON( result );
 				if( json.ret == 0) {
-					window.location.href = "/game";
+					window.location.href = "/";
 				} else {
 					var $error = $(that.getErrorTpl());
 					$error.find('ul').html('<li>您输入的密码不正确，原因可能是：</li>' + 

@@ -44,7 +44,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         http.csrf().disable() //取消页面token
         
             .authorizeRequests()
-                .antMatchers("/", "/game", "/recharge", "/about", "/user/register", "/register" ).permitAll()
+                .antMatchers("/", "/game", "/recharge", "/about", "/user/register", "/register", "/fonts/*" ).permitAll()
             
                 .anyRequest().authenticated()
                 
