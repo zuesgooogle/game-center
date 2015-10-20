@@ -15,13 +15,10 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
+-- ----------------------------
 -- Table structure for table `user`
---
-
+-- ----------------------------
 DROP TABLE IF EXISTS `user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `id` varchar(32) NOT NULL,
   `username` varchar(32) NOT NULL,
@@ -29,16 +26,24 @@ CREATE TABLE `user` (
   `type` smallint(6) DEFAULT NULL,
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+-- ----------------------------
+-- Table structure for server
+-- ----------------------------
+DROP TABLE IF EXISTS `server`;
+CREATE TABLE `server` (
+  `id` bigint(20) NOT NULL,
+  `app_id` bigint(20) NOT NULL DEFAULT '0',
+  `name` varchar(32) COLLATE utf8_bin NOT NULL,
+  `mysql_ip` varchar(20) COLLATE utf8_bin NOT NULL,
+  `mysql_user` varchar(32) COLLATE utf8_bin NOT NULL,
+  `mysql_pass` varchar(32) COLLATE utf8_bin NOT NULL,
+  `server_ip` varchar(20) COLLATE utf8_bin NOT NULL,
+  `server_port` int(11) NOT NULL,
+  `res_url` varchar(128) COLLATE utf8_bin NOT NULL,
+  `status` smallint(6) NOT NULL,
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- Dump completed on 2015-09-30 14:54:42
