@@ -40,7 +40,7 @@
 							<th>ID</th>
 							<th>服名称</th>
 							<th>服IP</th>
-							<th>服务端口</th>
+							<th>服端口</th>
 							<th>数据库IP</th>
 							<th>数据库名</th>
 							<th>操作</th>
