@@ -31,7 +31,7 @@
 			</div>
 			<div class="panel-body">
 				<form role="form" class="form-horizontal">
-			        <button class="btn btn-info" id="addServerBtn" onclick="gm.updateServer();" type="button">新增</button>
+			        <button class="btn btn-success" id="addServerBtn" onclick="gm.updateServer();" type="button">新增</button>
 				</form>
 			
 				<table class="table">
@@ -43,6 +43,7 @@
 							<th>服端口</th>
 							<th>数据库IP</th>
 							<th>数据库名</th>
+							<th>状态</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -55,6 +56,7 @@
 								<td>${server.serverPort}</td>
 								<td>${server.mysqlIp}</td>
 								<td>${server.mysqlUser}</td>
+								<td>${server.status}</td>
 								<td>
 									<input type="hidden" id="${server.id}" value='${server}'>
 									<button type="button" value="${server.id}" onclick="gm.viewServer(this);"  class="btn btn-sm btn-info">编辑</button>
