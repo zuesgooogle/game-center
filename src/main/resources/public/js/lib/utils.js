@@ -16,6 +16,17 @@ require.config({
 });
 
 define(['jquery', 'bootbox', 'loadmask'], function($, bootbox) {
+
+	$(function() {
+		$('a.active').click(function() {
+			$(this).parent().children('a.tree').toggle(300);
+		});
+		
+		$('div.panel-heading').click(function() {
+			$(this).parent().children('div.panel-body').toggle(300);
+		});
+	});
+	
 	var utils = {};
 	
 	utils = {

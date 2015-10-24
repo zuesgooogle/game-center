@@ -10,139 +10,139 @@ import java.sql.Timestamp;
  */
 public class Server implements Serializable {
 
-	/**
+    /**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private long id;
-	
-	/**
-	 * 所属应用ID
-	 */
-	private long appId;
+    private long id;
 
-	private String name;
+    /**
+     * 所属应用ID
+     */
+    private long appId;
 
-	private String mysqlIp;
+    private String name;
 
-	private String mysqlName;
+    private String mysqlIp;
 
-	private String mysqlUser;
+    private String mysqlName;
 
-	private String mysqlPass;
+    private String mysqlUser;
 
-	private String gameIp;
+    private String mysqlPass;
 
-	private String gamePort;
+    private String serverIp;
 
-	/**
-	 * 游戏资源地址
-	 */
-	private String resUrl;
+    private String serverPort;
 
-	private int status;
+    /**
+     * 游戏资源地址
+     */
+    private String resUrl;
 
-	private Timestamp createTime;
-	
-	public Server() {
+    private int status;
 
-	}
+    private Timestamp createTime;
 
-	public long getId() {
-		return id;
-	}
+    public Server() {
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    }
 
-	public long getAppId() {
-		return appId;
-	}
+    public long getId() {
+        return id;
+    }
 
-	public void setAppId(long appId) {
-		this.appId = appId;
-	}
+    public void setId(long id) {
+        this.id = id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public long getAppId() {
+        return appId;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setAppId(long appId) {
+        this.appId = appId;
+    }
 
-	public String getMysqlIp() {
-		return mysqlIp;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setMysqlIp(String mysqlIp) {
-		this.mysqlIp = mysqlIp;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getMysqlName() {
-		return mysqlName;
-	}
+    public String getMysqlIp() {
+        return mysqlIp;
+    }
 
-	public void setMysqlName(String mysqlName) {
-		this.mysqlName = mysqlName;
-	}
+    public void setMysqlIp(String mysqlIp) {
+        this.mysqlIp = mysqlIp;
+    }
 
-	public String getMysqlUser() {
-		return mysqlUser;
-	}
+    public String getMysqlName() {
+        return mysqlName;
+    }
 
-	public void setMysqlUser(String mysqlUser) {
-		this.mysqlUser = mysqlUser;
-	}
+    public void setMysqlName(String mysqlName) {
+        this.mysqlName = mysqlName;
+    }
 
-	public String getMysqlPass() {
-		return mysqlPass;
-	}
+    public String getMysqlUser() {
+        return mysqlUser;
+    }
 
-	public void setMysqlPass(String mysqlPass) {
-		this.mysqlPass = mysqlPass;
-	}
+    public void setMysqlUser(String mysqlUser) {
+        this.mysqlUser = mysqlUser;
+    }
 
-	public String getGameIp() {
-		return gameIp;
-	}
+    public String getMysqlPass() {
+        return mysqlPass;
+    }
 
-	public void setGameIp(String gameIp) {
-		this.gameIp = gameIp;
-	}
+    public void setMysqlPass(String mysqlPass) {
+        this.mysqlPass = mysqlPass;
+    }
 
-	public String getGamePort() {
-		return gamePort;
-	}
+    public String getServerIp() {
+        return serverIp;
+    }
 
-	public void setGamePort(String gamePort) {
-		this.gamePort = gamePort;
-	}
+    public void setServerIp(String serverIp) {
+        this.serverIp = serverIp;
+    }
 
-	public String getResUrl() {
-		return resUrl;
-	}
+    public String getServerPort() {
+        return serverPort;
+    }
 
-	public void setResUrl(String resUrl) {
-		this.resUrl = resUrl;
-	}
+    public void setServerPort(String serverPort) {
+        this.serverPort = serverPort;
+    }
 
-	public int getStatus() {
-		return status;
-	}
+    public String getResUrl() {
+        return resUrl;
+    }
 
-	public void setStatus(int status) {
-		this.status = status;
-	}
+    public void setResUrl(String resUrl) {
+        this.resUrl = resUrl;
+    }
 
-	public Timestamp getCreateTime() {
-		return createTime;
-	}
+    public int getStatus() {
+        return status;
+    }
 
-	public void setCreateTime(Timestamp createTime) {
-		this.createTime = createTime;
-	}
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
 
 }

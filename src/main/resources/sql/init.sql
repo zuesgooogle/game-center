@@ -28,6 +28,9 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+-- init admin
+INSERT INTO `user` VALUES ('F2EBC6540FE248F5A50BFB0C43200A47', 'admin', '$2a$10$2uKG3jg.goSEscQAGpXnX.UNLi8iiqidtQ4iu9RYKObdJnFUxedYC', '1', '2015-10-01 00:00:01');
+
 -- ----------------------------
 -- Table structure for server
 -- ----------------------------
@@ -37,6 +40,7 @@ CREATE TABLE `server` (
   `app_id` bigint(20) NOT NULL DEFAULT '0',
   `name` varchar(32) COLLATE utf8_bin NOT NULL,
   `mysql_ip` varchar(20) COLLATE utf8_bin NOT NULL,
+  `mysql_name` varchar(32) COLLATE utf8_bin NOT NULL,
   `mysql_user` varchar(32) COLLATE utf8_bin NOT NULL,
   `mysql_pass` varchar(32) COLLATE utf8_bin NOT NULL,
   `server_ip` varchar(20) COLLATE utf8_bin NOT NULL,

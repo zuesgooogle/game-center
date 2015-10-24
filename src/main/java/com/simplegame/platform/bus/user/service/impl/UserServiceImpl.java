@@ -66,7 +66,7 @@ public class UserServiceImpl implements IUserService {
         
         List<GrantedAuthority> auth = AuthorityUtils.commaSeparatedStringToAuthorityList(Roles.USER.name);
         if( user.getType() == Roles.ADMIN.type ) {
-            auth = AuthorityUtils.commaSeparatedStringToAuthorityList(Roles.ADMIN.name);
+            auth = AuthorityUtils.createAuthorityList(Roles.ADMIN.name, Roles.USER.name);
         }
         String password = user.getPassword();
         

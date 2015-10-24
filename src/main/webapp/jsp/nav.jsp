@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 	<nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -30,6 +31,12 @@
 	                  <li><a href="/logout">退出</a></li>
 	                </ul>
 	              </li>
+	            
+	            <c:set var="authorities" value="${pageContext.request.userPrincipal.authorities}" />
+	            <c:if test="${fn:contains(authorities, 'ADMIN')}">
+					<li><a href="/console">管理中心</a></li>
+				</c:if>
+	              
 			  </ul>	
 		  </c:if>
 		  

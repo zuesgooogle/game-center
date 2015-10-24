@@ -17,25 +17,13 @@ require.config({
 });
 
 define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator' ], function($, bootbox, utils) {
-	var user = {};
+	var console = {};
 	
 	$(function() {
-		$("#password").bind('keyup',function(event) {  
-			if(event.keyCode == 13){  
-				user.login();
-			}
-		}); 
 		
-		$('#loginBtn').click(function() {
-			user.login();
-		});
-		
-		$('#registerBtn').click(function() {
-			user.register();
-		});
 	});
 	
-	user = {	
+	console = {	
 			
 		login: function() {
 			var that = this;
@@ -150,5 +138,5 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator' ], function($, bo
 		}
 	};
 	
-	return user;
+	return console;
 });
