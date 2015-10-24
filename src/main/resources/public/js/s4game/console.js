@@ -10,7 +10,7 @@ require.config({
 	paths: {
 		'jquery'	: '../lib/jquery.min',
 		'bootstrap'	: '../lib/bootstrap.min',
-　　		'validator' : '../lib/validator.min',
+  		'validator' : '../lib/validator.min',
   		'bootbox'   : '../lib/bootbox.min',
   		'utils'     : '../lib/utils'
 　　}

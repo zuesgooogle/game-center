@@ -22,7 +22,8 @@
 	
 	<div class="container-fluid">
 	<%@ include file="menu.jsp"%>
-	
+
+
 
 	<div class="col-sm-10 mask">
 		<div class="panel panel-primary">
@@ -30,10 +31,9 @@
 				<h3 class="panel-title">选区配置</h3>
 			</div>
 			<div class="panel-body">
-				<form role="form" class="form-horizontal">
-			        <button class="btn btn-success" id="addServerBtn" onclick="gm.updateServer();" type="button">新增</button>
-				</form>
 			
+				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#addModal">新增</button>
+
 				<table class="table">
 					<thead>
 						<tr>
@@ -72,7 +72,28 @@
 	</div>
 
 	</div>
+
+
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Large Modal</h4>
+          </div>
+          <div class="modal-body">
+            <h3>Modal Body</h3>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 	
 	<%@ include file="../footer.jsp"%>
+	<script src="/js/require.js" data-main="js/s4game/console"></script>
 </body>
 </html>
