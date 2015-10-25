@@ -9,12 +9,9 @@
 		<result property="mysqlName" column="mysql_name" />
 		<result property="mysqlUser" column="mysql_user" />
 		<result property="mysqlPass" column="mysql_pass" />
-		
 		<result property="serverIp" column="server_ip" />
 		<result property="serverPort" column="server_port" />
-		
 		<result property="resUrl" column="res_url" />
-		
 		<result property="status" column="status" />
 		<result property="createTime" column="create_time" />
 	</resultMap>
@@ -66,25 +63,25 @@
 	
 	<insert id="insertServer" parameterType="com.simplegame.platform.bus.server.entity.Server">
 		insert into server(
-			id
-			,app_id
-			,mysql_id
+			app_id
+			,name
+			,mysql_ip
 			,mysql_name
 			,mysql_user
 			,mysql_pass
-			,server_id
+			,server_ip
 			,server_port
 			,res_url
 			,status
 			,create_time
 		)
 		values(
-			#{id}
-			,#{appId}
+			#{appId}
+			,#{name}
 			,#{mysqlIp}
 			,#{mysqlName}
+			,#{mysqlUser}
 			,#{mysqlPass}
-			,#{mysqlPort}
 			,#{serverIp}
 			,#{serverPort}
 			,#{resUrl}

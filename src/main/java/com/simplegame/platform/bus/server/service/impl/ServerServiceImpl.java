@@ -1,5 +1,6 @@
 package com.simplegame.platform.bus.server.service.impl;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -23,15 +24,13 @@ public class ServerServiceImpl implements IServerService {
     private IServerDao serverDao;
     
     @Override
-    public Server add(Server server) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public int update(Server server) {
-        // TODO Auto-generated method stub
-        return 0;
+    public void save(Server server) {
+    	if( server.getId() == 0 ) {
+    		server.setCreateTime(new Timestamp(System.currentTimeMillis()));
+    		serverDao.insert(server);
+    	} else {
+    		serverDao.update(server);
+    	}
     }
 
     @Override

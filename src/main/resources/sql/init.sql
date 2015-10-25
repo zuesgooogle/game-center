@@ -36,7 +36,7 @@ INSERT INTO `user` VALUES ('F2EBC6540FE248F5A50BFB0C43200A47', 'admin', '$2a$10$
 -- ----------------------------
 DROP TABLE IF EXISTS `server`;
 CREATE TABLE `server` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `app_id` bigint(20) NOT NULL DEFAULT '0',
   `name` varchar(32) COLLATE utf8_bin NOT NULL,
   `mysql_ip` varchar(20) COLLATE utf8_bin NOT NULL,
@@ -45,9 +45,8 @@ CREATE TABLE `server` (
   `mysql_pass` varchar(32) COLLATE utf8_bin NOT NULL,
   `server_ip` varchar(20) COLLATE utf8_bin NOT NULL,
   `server_port` int(11) NOT NULL,
-  `res_url` varchar(128) COLLATE utf8_bin NOT NULL,
+  `res_url` varchar(128) COLLATE utf8_bin DEFAULT NULL,
   `status` smallint(6) NOT NULL,
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

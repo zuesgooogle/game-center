@@ -8,7 +8,7 @@
 	</div>
 	
 	<div class="list-group">
-		<a href="#" class="list-group-item active">服务 管理</a> 
+		<a href="#" class="list-group-item active">服务管理</a> 
 		<a href="/server" class="list-group-item tree">选区配置</a>
 		<a href="/gm/merge" class="list-group-item tree">Merge</a>
 	</div>

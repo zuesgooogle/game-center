@@ -4,11 +4,15 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.simplegame.platform.bus.server.entity.Server;
 import com.simplegame.platform.bus.server.service.IServerService;
 
@@ -18,14 +22,16 @@ import com.simplegame.platform.bus.server.service.IServerService;
  * @sine   2015年10月24日 下午5:03:41
  *
  */
-@Controller
+@RestController
 public class ServerController {
 
+	private Logger LOG = LogManager.getLogger(getClass());
+	
     @Resource
     private IServerService serverService;
     
     @PreAuthorize("hasAnyRole('ADMIN')")
-    @RequestMapping("server")
+    @RequestMapping("/server")
     public ModelAndView list() {
         ModelAndView view = new ModelAndView("console/server");
         
@@ -35,4 +41,17 @@ public class ServerController {
         return view;
     }
     
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    @RequestMapping("/server/update")
+    public String update(String params) {
+    	LOG.info("server update: {}", params);
+    	
+    	JSONObject result = new JSONObject();
+    	
+    	Server server = JSON.parseObject(params, Server.class);
+    	serverService.save(server);
+    	
+    	result.put("ret", 0);
+    	return result.toJSONString();
+    }
 }

@@ -11,9 +11,7 @@ import com.simplegame.platform.bus.server.entity.Server;
  */
 public interface IServerService {
 
-	public Server add(Server server);
-	
-	public int update(Server server);
+	public void save(Server server);
 	
 	public int delete(Server server);
 	

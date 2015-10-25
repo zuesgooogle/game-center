@@ -23,15 +23,12 @@
 	<div class="container-fluid">
 	<%@ include file="menu.jsp"%>
 
-
-
 	<div class="col-sm-10 mask">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">选区配置</h3>
 			</div>
 			<div class="panel-body">
-			
 				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#addModal">新增</button>
 
 				<table class="table">
@@ -42,7 +39,7 @@
 							<th>服IP</th>
 							<th>服端口</th>
 							<th>数据库IP</th>
-							<th>数据库名</th>
+							<th>数据库实例</th>
 							<th>状态</th>
 							<th>操作</th>
 						</tr>
@@ -55,7 +52,7 @@
 								<td>${server.serverIp}</td>
 								<td>${server.serverPort}</td>
 								<td>${server.mysqlIp}</td>
-								<td>${server.mysqlUser}</td>
+								<td>${server.mysqlName}</td>
 								<td>${server.status}</td>
 								<td>
 									<input type="hidden" id="${server.id}" value='${server}'>
@@ -74,19 +71,90 @@
 	</div>
 
 
-    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
+    <div class="modal fade mask" id="addModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+      <div class="modal-dialog modal-default">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Large Modal</h4>
+            <h4 class="modal-title" id="myModalLabel">服务信息</h4>
           </div>
           <div class="modal-body">
-            <h3>Modal Body</h3>
+          	<form id="serverForm" role="form" class="form-horizontal" data-toggle="validator">
+				<fieldset>
+					<legend>服务器</legend>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">ID</label> 
+						<div class="col-sm-4">
+							<input id="id" type="text" class="form-control" placeholder="服务器自动生成" disabled>
+						</div>
+					</div>
+					<div class="form-group">	
+						<label class="col-sm-2 control-label">Name</label> 
+						<div class="col-sm-4">
+							<input id="name" type="text" class="form-control" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">IP</label> 
+						<div class="col-sm-4">
+							<input id="serverIp" type="text" class="form-control" required>
+						</div>
+						
+						<label class="col-sm-2 control-label">Port</label> 
+						<div class="col-sm-4">
+							<input id="serverPort" type="text" class="form-control" required>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>数据库</legend>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">IP</label> 
+						<div class="col-sm-4">
+							<input id="mysqlIp" type="text" class="form-control" required>
+						</div>
+						<label class="col-sm-2 control-label">实例名</label> 
+						<div class="col-sm-4">
+							<input id="mysqlName" type="text" class="form-control" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label"> 账户</label> 
+						<div class="col-sm-4">
+							<input id="mysqlUser" type="text" class="form-control" required>
+						</div>
+						<label class="col-sm-2 control-label">密码</label>
+						<div class="col-sm-4"> 
+							<input id="mysqlPass" type="text" class="form-control" required>
+						</div>
+					</div>
+				</fieldset>
+								
+				<fieldset>
+					<legend>状态</legend>
+					<div class="form-group">
+						<label class="col-sm-1 control-label"></label> 
+						<div class="btn-group col-sm-8 radio" data-toggle="buttons">
+						   <label class="btn btn-default active">
+						      <input type="radio" name="status" value="1" checked> 停服
+						   </label>
+						   <label class="btn btn-success">
+						      <input type="radio" name="status" value="2"> 运行中
+						   </label>
+						   <label class="btn btn-primary">
+						      <input type="radio" name="status" value="4"> 流畅
+						   </label>
+						   <label class="btn btn-danger">
+						      <input type="radio" name="status" value="8"> 爆满
+						   </label>
+						</div>	
+					</div>
+				</fieldset>
+			</form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary" id="updateServerBtn">保存</button>
           </div>
         </div>
       </div>
@@ -94,6 +162,6 @@
 
 	
 	<%@ include file="../footer.jsp"%>
-	<script src="/js/require.js" data-main="js/s4game/console"></script>
+	<script src="/js/require.js" data-main="js/s4game/server"></script>
 </body>
 </html>
