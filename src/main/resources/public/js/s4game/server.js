@@ -98,14 +98,28 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json' ], functi
 		
 		edit: function(btn) {
 			var serverId = $(btn).attr('data-id');
-			var data = $('#' + serverId).val();
+			var json = $('#' + serverId).val();
 
-			var json = jQuery.parseJSON(data);
-			$.each(json, function(key, value) {
+			var data = jQuery.parseJSON(json);
+			this.bindData(data);
+			
+			$('#addModal').modal('show');
+		},
+		
+		bindData: function(data) {
+			$.each(data, function(key, value) {
 				$('#' + key).val(value);
 			});
 			
-			$('#addModal').modal('show');
+			//status radio
+			var radio = $('input:radio[name="status"]');
+			$.each(radio, function(index, element) {
+				var $el = $(element);
+				if( data.status == $el.val() ) {
+					$el.attr("checked", "checked");
+					return;
+				}
+			});
 		},
 		
 		cleanData: function() {

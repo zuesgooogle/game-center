@@ -65,4 +65,15 @@ public class ServerController {
         result.put("ret", 0);
         return result.toJSONString();
     }
+    
+    @PreAuthorize("hasAnyRole('USER')")
+    @RequestMapping("/selectzone")
+    public ModelAndView selectzone() {
+        ModelAndView view = new ModelAndView("selectzone");
+        
+        List<Server> servers = serverService.getByAppId(0);
+        view.addObject("servers", servers);
+        
+        return view;
+    }
 }

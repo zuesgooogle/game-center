@@ -136,20 +136,20 @@
 					<legend>状态</legend>
 					<div class="form-group">
 						<label class="col-sm-1 control-label"></label> 
-						<div class="btn-group col-sm-8 radio" data-toggle="buttons">
-						   <label class="btn btn-default active">
-						      <input type="radio" name="status" value="1" checked> 停服
-						   </label>
-						   <label class="btn btn-success">
-						      <input type="radio" name="status" value="2"> 运行中
-						   </label>
-						   <label class="btn btn-primary">
-						      <input type="radio" name="status" value="4"> 流畅
-						   </label>
-						   <label class="btn btn-danger">
-						      <input type="radio" name="status" value="8"> 爆满
-						   </label>
-						</div>	
+						<div class="col-sm-8">
+							<label class="radio-inline btn btn-default">
+							  <input type="radio" name="status" id="radio1" value="1" checked required> 停服
+							</label>
+							<label class="radio-inline btn btn-success">
+							  <input type="radio" name="status" id="radio2" value="2" required> 运行中
+							</label>
+							<label class="radio-inline btn btn-primary">
+							  <input type="radio" name="status" id="radio3" value="4" required> 流畅
+							</label>
+							<label class="radio-inline btn btn-danger">
+							  <input type="radio" name="status" id="radio4" value="8" required> 繁忙
+							</label>
+						</div>
 					</div>
 				</fieldset>
 			</form>

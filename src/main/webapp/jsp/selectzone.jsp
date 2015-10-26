@@ -32,7 +32,10 @@
 							<legend>推荐服务</legend>
 							<div class="form-group">
 								<div class="col-sm-4">
-									<button type="button" class="btn btn-block btn-success btn-lg">进入游戏</button>
+									<button type="button" class="btn btn-block btn-success btn-lg">
+									<p>2服</p>
+									进入游戏
+									</button>
 								</div>
 								<label class="col-sm-6">我们根据您的网络环境推荐左侧服务器</label> 
 							</div>
@@ -65,12 +68,14 @@
 						<fieldset>
 							<legend>所有服务器</legend>
 							<div class="form-group">
+
+							<c:forEach var="server"  items="${servers}" varStatus="s" >
 								<div class="col-sm-3">
-									<a class="btn btn-default btn-group-justified btn-sm">1服</a>
+									<a class="btn btn-default btn-group-justified btn-sm">${server.name}</a>
 								</div>
-								
+							</c:forEach>	
+
 							</div>
-							
 						</fieldset>
 					</form>
 			</div>	
