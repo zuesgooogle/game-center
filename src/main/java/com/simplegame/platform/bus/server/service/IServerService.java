@@ -13,7 +13,7 @@ public interface IServerService {
 
 	public void save(Server server);
 	
-	public int delete(Server server);
+	public int remove(long id);
 	
 	public Server getById(long id);
 	

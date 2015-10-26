@@ -34,9 +34,8 @@ public class ServerServiceImpl implements IServerService {
     }
 
     @Override
-    public int delete(Server server) {
-        // TODO Auto-generated method stub
-        return 0;
+    public int remove(long id) {
+        return serverDao.delete(id);
     }
 
     @Override

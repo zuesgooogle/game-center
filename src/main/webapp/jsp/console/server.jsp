@@ -29,7 +29,7 @@
 				<h3 class="panel-title">选区配置</h3>
 			</div>
 			<div class="panel-body">
-				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#addModal">新增</button>
+				<button type="button" class="btn btn-success" data-toggle="modal" id="addServerBtn"><span class="glyphicon glyphicon-plus">&nbsp;添加新服</span></button>
 
 				<div class="table-responsive">
 				<table class="table">
@@ -59,7 +59,7 @@
 									<input type="hidden" id="${server.id}" value='${server}'>
 									<a class="server-edit" href="javascript:void(0)" data-id="${server.id}" title="编辑"><span class="glyphicon glyphicon-edit"></span></a>
 									&nbsp;
-									<a class="server-delete" href="javascript:void(0)" data-id="${server.id}"  title="删除"><span class="glyphicon glyphicon-remove"></span></a>
+									<a class="server-remove" href="javascript:void(0)" data-id="${server.id}"  title="删除"><span class="glyphicon glyphicon-remove"></span></a>
 								</td>
 							</tr>
 						</c:forEach>

@@ -108,6 +108,10 @@
 	    
 	    where id = #{id}
 	</update>
+	
+	<delete id="deleteServer" parameterType="Long">
+		delete from server where id = #{id}
+	</delete>
 
 </mapper>
 	

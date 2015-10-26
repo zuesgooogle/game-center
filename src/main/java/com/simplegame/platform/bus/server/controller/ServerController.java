@@ -54,4 +54,15 @@ public class ServerController {
     	result.put("ret", 0);
     	return result.toJSONString();
     }
+    
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    @RequestMapping("/server/remove")
+    public String remove(long id) {
+        JSONObject result = new JSONObject();
+        
+        serverService.remove(id);
+        
+        result.put("ret", 0);
+        return result.toJSONString();
+    }
 }
