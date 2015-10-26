@@ -18,16 +18,5 @@
 		<a href="/gm/" class="list-group-item tree">Command</a> 
 		<a href="/gm/notice" class="list-group-item tree">Notice</a>
 	</div>
-
-	<div class="list-group">
-		<a href="#" class="list-group-item active">报表管理</a> 
-		<a href="/gm/statistics" class="list-group-item tree">Statistics</a>
-		<a href="/gm/rechargerecord" class="list-group-item tree">充值排行</a>
-	</div>
-	
-	<div class="list-group">
-		<a href="#" class="list-group-item active">工具箱</a> 
-		<a href="#" class="list-group-item tree">Goods View</a>
-	</div>
 		
 </div>

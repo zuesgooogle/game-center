@@ -3,6 +3,8 @@ package com.simplegame.platform.bus.server.entity;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+import com.alibaba.fastjson.JSON;
+
 /**
  * @Author zeusgooogle@gmail.com
  * @sine 2015年9月30日 下午3:14:29
@@ -143,6 +145,11 @@ public class Server implements Serializable {
 
     public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;
+    }
+    
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
     }
 
 }

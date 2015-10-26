@@ -2,6 +2,7 @@ require.config({
 	shim : {
         'bootstrap' : ['jquery'],
         'bootbox'   : ['jquery'],
+        'json'		: ['jquery'],
         'validator' : ['jquery'],
         'utils'     : ['jquery']
     },
@@ -25,6 +26,9 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json' ], functi
 			server.update();
 		});
 
+		$('.server-edit').click(function() {
+			server.edit(this);
+		});
 	});
 	
 	server = {	
@@ -76,6 +80,18 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json' ], functi
 					
 				}
 			});
+		},
+		
+		edit: function(btn) {
+			var serverId = $(btn).attr('data-id');
+			var data = $('#' + serverId).val();
+
+			var json = jQuery.parseJSON(data);
+			$.each(json, function(key, value) {
+				$('#' + key).val(value);
+			});
+			
+			$('#addModal').modal('show');
 		}
 		
 	};

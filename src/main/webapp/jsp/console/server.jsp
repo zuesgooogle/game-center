@@ -4,15 +4,15 @@
 
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="Cache-Control" content="no-cache">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="css/caroursel.css" rel="stylesheet">
 
-	<link href="/css/s4game-main.css" rel="stylesheet">
-	<link href="/css/s4game-footer.css" rel="stylesheet">
+	<link href="css/s4game-main.css" rel="stylesheet">
+	<link href="css/s4game-footer.css" rel="stylesheet">
 
 	<title>选区配置</title>
 
@@ -31,6 +31,7 @@
 			<div class="panel-body">
 				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#addModal">新增</button>
 
+				<div class="table-responsive">
 				<table class="table">
 					<thead>
 						<tr>
@@ -56,14 +57,15 @@
 								<td>${server.status}</td>
 								<td>
 									<input type="hidden" id="${server.id}" value='${server}'>
-									<button type="button" value="${server.id}" onclick="gm.viewServer(this);"  class="btn btn-sm btn-info">编辑</button>
-									<button type="button" value="${server.id}" onclick="gm.deleteServer(this);" class="btn btn-sm btn-danger">删除</button>
+									<a class="server-edit" href="javascript:void(0)" data-id="${server.id}" title="编辑"><span class="glyphicon glyphicon-edit"></span></a>
+									&nbsp;
+									<a class="server-delete" href="javascript:void(0)" data-id="${server.id}"  title="删除"><span class="glyphicon glyphicon-remove"></span></a>
 								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-				
+				</div>
 			</div>	
 		</div>
 	</div>
