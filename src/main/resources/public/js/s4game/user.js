@@ -158,15 +158,8 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator' ], function($, bo
 						window.location.href = "/login";
 					});
 				} else {
-					var $error = $(that.getErrorTpl());
-					$error.find('ul').html('<li>账号已存在，可以尝试：</li>' + 
-				  			  '<li>'+ username +'123；</li>' +
-				  			  '<li>'+ username +'abc；</li>'
-				  			);
-
-					
 					bootbox.dialog({
-					  message: $error,
+					  message: json.msg,
 					  buttons: {
 						  danger: {
 						      label: "确定",
@@ -186,13 +179,13 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator' ], function($, bo
 		errorTip: function() {
 			return '<div class="form-group has-error">' +
 						  	'<div class="help-block with-errors">'+
-								'<ol class="list-unstyled">' +
+								'<ul class="list-unstyled">' +
 						  			'<li>您输入的密码不正确，原因可能是：</li>' + 
 						  			'<li>账号输入有误</li>' +
 						  			'<li>忘记密码</li>' +
 						  			'<li>未区分字母大小写</li>' +
 						  			'<li>未开启小键盘</li>'
-						  	    '</ol>' +
+						  	    '</ul>' +
 							'</div>' +
 				   '</div>';
 		}
