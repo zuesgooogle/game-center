@@ -69,14 +69,51 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator' ], function($, bo
 				if( json.ret == 0) {
 					window.location.href = "/";
 				} else {
-					var $error = $(that.getErrorTpl());
-					$error.find('ul').html('<li>您输入的密码不正确，原因可能是：</li>' + 
-				  			  '<li>忘记密码；账号输入有误；</li>' +
-				  			  '<li>未区分字母大小写；未开启小键盘</li>'
-				  			);
-					
 					bootbox.dialog({
-					  message: $error,
+					  message:  $(that.errorTip()),
+					  buttons: {
+						  danger: {
+						      label: "确定",
+						      className: "btn-danger"
+						  }
+					  }
+					});
+				}
+			});
+		},
+		
+		loginQuick: function(redirect) {
+			var that = this;
+			
+			var form = $('#loginQuickForm');
+			form.validator('validate');
+			
+			var errors = form.find('div.has-error').length;
+			if( errors > 0 ) {
+				return;
+			}
+			
+			$.ajax({
+				url:  '/login',
+				type: 'POST',
+				data: {
+					username: $('#username').val(),
+					password: $('#password').val()
+				},
+				beforeSend: function(xhr) {
+					utils.mask();
+				},
+				complete: function(result) {
+					utils.unmask();
+				}
+			})
+			.done(function(result) {
+				var json = jQuery.parseJSON( result );
+				if( json.ret == 0) {
+					window.location.href = redirect;
+				} else {
+					bootbox.dialog({
+					  message:  $(that.errorTip()),
 					  buttons: {
 						  danger: {
 						      label: "确定",
@@ -141,10 +178,21 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator' ], function($, bo
 			});
 		},
 		
-		getErrorTpl: function() {
+		isLogin() {
+			var loginuser = $('#loginuser');
+			return loginuser != null && loginuser.val() != '';
+		},
+		
+		errorTip: function() {
 			return '<div class="form-group has-error">' +
 						  	'<div class="help-block with-errors">'+
-								'<ul class="list-unstyled"></ul>' +
+								'<ol class="list-unstyled">' +
+						  			'<li>您输入的密码不正确，原因可能是：</li>' + 
+						  			'<li>账号输入有误</li>' +
+						  			'<li>忘记密码</li>' +
+						  			'<li>未区分字母大小写</li>' +
+						  			'<li>未开启小键盘</li>'
+						  	    '</ol>' +
 							'</div>' +
 				   '</div>';
 		}

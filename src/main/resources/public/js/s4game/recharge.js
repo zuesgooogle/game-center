@@ -12,10 +12,11 @@ require.config({
 　　		'validator' : '../lib/validator.min',
 　　		'select'    : '../lib/bootstrap-select.min',
   		'utils'     : '../lib/utils',
+  		'user'		: 'user'
 　　}
 });
 
-define(['jquery', 'bootbox', 'utils', 'select', 'bootstrap', 'validator'], function($, bootbox, utils) {
+define(['jquery', 'bootbox', 'utils', 'user', 'select', 'bootstrap', 'validator'], function($, bootbox, utils, user) {
 	utils.navActive();
 	
 	var recharge = {};
@@ -27,6 +28,9 @@ define(['jquery', 'bootbox', 'utils', 'select', 'bootstrap', 'validator'], funct
 			recharge.prepare();
 		 });
 		 
+		 $('#loginQuickBtn').click(function() {
+			 user.loginQuick("/recharge");
+		 });
 	});
 	
 	recharge = {
@@ -37,8 +41,8 @@ define(['jquery', 'bootbox', 'utils', 'select', 'bootstrap', 'validator'], funct
 		prepare: function() {
 			var that = this;
 			
-			if( !this.isLogin() ) {
-				this.error('请先登录！');
+			if( !user.isLogin() ) {
+				$('#loginQuickModal').modal('show');
 				return;
 			}
 			
@@ -69,12 +73,6 @@ define(['jquery', 'bootbox', 'utils', 'select', 'bootstrap', 'validator'], funct
 				  }
 			  }
 			});
-		},
-		
-		isLogin() {
-			var loginuser = $('#loginuser');
-			
-			return loginuser != null && loginuser.val() != '';
 		}
 		
 	};

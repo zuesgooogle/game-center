@@ -58,10 +58,15 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public User loadByName(String username) {
+        return userDao.selectUserByUsername(username);
+    }
+    
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userDao.selectUserByUsername(username);
         if(null == user) {
-            return null;
+            return new org.springframework.security.core.userdetails.User(username, "", AuthorityUtils.NO_AUTHORITIES);
         }
         
         List<GrantedAuthority> auth = AuthorityUtils.commaSeparatedStringToAuthorityList(Roles.USER.name);

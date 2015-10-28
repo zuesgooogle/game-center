@@ -21,6 +21,8 @@ public interface IUserService extends UserDetailsService{
      */
     boolean exist(String username);
     
+    public User loadByName(String username);
+    
     public User createUser(String username, String password);
     
 }

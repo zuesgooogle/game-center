@@ -53,6 +53,7 @@ define(['jquery', 'bootbox', 'loadmask'], function($, bootbox) {
 		alert: function(message) {
 			bootbox.alert(message);
 		}
+		
 	};
 	
 	return utils;

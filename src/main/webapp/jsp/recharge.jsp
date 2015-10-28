@@ -144,7 +144,8 @@
 	</div>
 
     </div> <!-- /container -->
-			
+	
+	<%@ include file="loginquick.jsp"%>		
 	<%@ include file="footer.jsp"%>
 		
 	<input type="hidden" id="navTag" value="2"></input>
