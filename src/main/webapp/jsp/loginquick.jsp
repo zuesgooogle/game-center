@@ -8,7 +8,6 @@
 				<h4 class="modal-title" id="myModalLabel">快速登录</h4>
 			</div>
 			<div class="modal-body">
-	
 				<br />
 				<form id="loginQuickForm" data-toggle="validator" role="form">
 					<div class="form-group">
@@ -32,13 +31,7 @@
 					<br />
 					<br />
 				</form>
-
 			</div>
-			<!-- 
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-          </div>
-           -->
 		</div>
 	</div>
 </div>
