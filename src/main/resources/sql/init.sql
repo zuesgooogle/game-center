@@ -16,21 +16,23 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 -- ----------------------------
--- Table structure for table `user`
+-- Table structure for user
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `id` varchar(32) NOT NULL,
-  `username` varchar(32) NOT NULL,
-  `password` varchar(128) NOT NULL,
-  `type` smallint(6) DEFAULT NULL,
+  `id` varchar(32) COLLATE utf8_bin NOT NULL,
+  `username` varchar(32) COLLATE utf8_bin NOT NULL,
+  `password` varchar(128) COLLATE utf8_bin NOT NULL,
+  `type` smallint(6) NOT NULL,
+  `games` text CHARACTER SET utf8 NOT NULL,
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- init admin
-INSERT INTO `user` VALUES ('F2EBC6540FE248F5A50BFB0C43200A47', 'admin', '$2a$10$2uKG3jg.goSEscQAGpXnX.UNLi8iiqidtQ4iu9RYKObdJnFUxedYC', '1', '2015-10-01 00:00:01');
-
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES ('F2EBC6540FE248F5A50BFB0C43200A47', 'admin', '$2a$10$2uKG3jg.goSEscQAGpXnX.UNLi8iiqidtQ4iu9RYKObdJnFUxedYC', '1', '[]', '2015-10-27 16:11:04');
 -- ----------------------------
 -- Table structure for server
 -- ----------------------------
