@@ -13,13 +13,17 @@ import com.simplegame.platform.bus.user.entity.User;
 
 public interface IUserService extends UserDetailsService{
 
+    public String getOnlineUsername();
+    
+    public boolean isOnline();
+    
     /**
      * 账户是否存在
      * 
      * @param username
      * @return
      */
-    boolean exist(String username);
+    public boolean exist(String username);
     
     public User loadByName(String username);
     

@@ -15,10 +15,10 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 @SpringBootApplication
 @EnableGlobalMethodSecurity(securedEnabled = true)
 @ImportResource(value="classpath:config/spring/application-context.xml")
-public class GamePlatform {
+public class GameCenter {
 
     public static void main(String[] args) {
-        SpringApplication.run(GamePlatform.class, args);
+        SpringApplication.run(GameCenter.class, args);
     }
 
 }

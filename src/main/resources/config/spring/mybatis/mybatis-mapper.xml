@@ -8,6 +8,7 @@
 	<mappers>
 		<mapper resource="com/simplegame/platform/bus/user/entity/User.xml" />
 		<mapper resource="com/simplegame/platform/bus/server/entity/Server.xml" />
+		<mapper resource="com/simplegame/platform/bus/app/entity/App.xml" />
 	</mappers>
 	
 </configuration>

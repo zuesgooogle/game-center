@@ -6,8 +6,10 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -76,6 +78,24 @@ public class UserServiceImpl implements IUserService {
         String password = user.getPassword();
         
         return new org.springframework.security.core.userdetails.User(username, password, auth);
+    }
+
+    @Override
+    public boolean isOnline() {
+        String username = getOnlineUsername();
+        return username != null;
+    }
+    
+    @Override
+    public String getOnlineUsername() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        
+        if( auth.getPrincipal() instanceof org.springframework.security.core.userdetails.User ) {
+            org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User)auth.getPrincipal();
+            return user.getUsername();
+        }
+        
+        return null;
     }
 
 }

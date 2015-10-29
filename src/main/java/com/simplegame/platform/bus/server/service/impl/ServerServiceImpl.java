@@ -49,4 +49,9 @@ public class ServerServiceImpl implements IServerService {
         return serverDao.selectServerByAppId(0);
     }
 
+    @Override
+    public Server getNewestByAppId(long appId) {
+        return serverDao.selectServerNewestByAppId(0);
+    }
+
 }

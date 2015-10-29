@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="APP">
+	<resultMap id="app" type="com.simplegame.platform.bus.app.entity.App">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="key" column="key" />
+		<result property="username" column="username" />
+		<result property="createTime" column="create_time" />
+	</resultMap>
+	
+	<sql id="queryConditionApp">
+		<where>
+			<if test="id != null">AND id = #{id}</if>
+			<if test="name != null">AND name = #{name}</if>
+			<if test="username != null">AND username = #{username}</if>
+		</where>
+	</sql>
+	
+	<select id="selectAppAll" resultMap="app">
+		select
+		id
+		,`name`
+		,`key`
+		,username
+		,create_time
+		from app
+		
+		order by id desc;
+	</select>
+	
+	<select id="selectAppById" resultMap="app" parameterType="Long">
+		select
+		id
+		,`name`
+		,`key`
+		,username
+		,create_time
+		from app where id = #{id}
+	</select>
+	
+	<select id="selectAppByUsername" resultMap="app" parameterType="String">
+		select
+		id
+		,`name`
+		,`key`
+		,username
+		,create_time
+		from app where username = #{username}
+		
+		order by id desc;
+	</select>
+	
+	<insert id="insertApp" parameterType="com.simplegame.platform.bus.app.entity.App">
+		insert into app(id, name, key, username, create_time)
+		
+		values(#{id}, #{name}, #{key}, #{username}, #{createTime})
+		
+		<selectKey keyProperty="id" resultType="int" order="AFTER">  
+            SELECT LAST_INSERT_ID();  
+        </selectKey> 
+	</insert>
+
+	<update id="updateApp" parameterType="com.simplegame.platform.bus.app.entity.App">
+		update app set
+	    name = #{name}
+	    
+	    where id = #{id}
+	</update>
+
+	<delete id="deleteApp" parameterType="Long">
+		delete from app where id = #{id}
+	</delete>
+
+</mapper>
+	

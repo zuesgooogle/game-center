@@ -61,6 +61,26 @@
 		order by id desc;
 	</select>
 	
+	<select id="selectServerNewestByAppId" resultMap="server" parameterType="Long">
+		select
+		id
+		,app_id
+		,name
+		,mysql_ip
+		,mysql_name
+		,mysql_user
+		,mysql_pass
+		,server_ip
+		,server_port
+		,res_url
+		,status
+		,create_time
+		
+		from server where app_id = #{appId}
+		
+		order by id desc limit 1;
+	</select>
+	
 	<insert id="insertServer" parameterType="com.simplegame.platform.bus.server.entity.Server">
 		insert into server(
 			app_id

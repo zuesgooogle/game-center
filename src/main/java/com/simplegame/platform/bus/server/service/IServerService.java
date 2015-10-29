@@ -18,4 +18,12 @@ public interface IServerService {
 	public Server getById(long id);
 	
 	public List<Server> getByAppId(long appId);
+	
+	/**
+	 * 获取最新，推荐服务器
+	 * 
+	 * @param appId
+	 * @return
+	 */
+	public Server getNewestByAppId(long appId);
 }

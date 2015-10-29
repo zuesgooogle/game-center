@@ -27,6 +27,21 @@ public class User implements Serializable {
      * 用户类型
      */
     private int type;
+    
+    /**
+     * 玩过的游戏，服务ID列表
+     * 
+     * JSON Object
+     *    
+     *    appId -> list(serverId)
+     *    appId -> list(serverId)
+     *    ......
+     *    
+     * Mapping Java
+     * 
+     *    Map<Integer, List<String>>
+     */
+    private String games;
 
     private Timestamp createTime;
 
@@ -63,6 +78,14 @@ public class User implements Serializable {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public String getGames() {
+        return games;
+    }
+
+    public void setGames(String games) {
+        this.games = games;
     }
 
     public Timestamp getCreateTime() {

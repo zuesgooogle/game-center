@@ -6,6 +6,7 @@
 		<result property="username" column="username" />
 		<result property="password" column="password" />
 		<result property="type" column="type" />
+		<result property="games" column="games" />
 		<result property="createTime" column="create_time" />
 	</resultMap>
 	
@@ -25,6 +26,7 @@
 		,password
 		,type
 		,create_time
+		,games
 		from user where id = #{id}
 	</select>
 	
@@ -35,6 +37,7 @@
 		,password
 		,type
 		,create_time
+		,games
 		from user where username = #{username}
 	</select>
 	
@@ -46,19 +49,21 @@
 		,password
 		,type
 		,create_time
+		,games
 		from user
 		<include refid="queryConditionUser"/>
 	</select>
 	
 	<insert id="insertUser" parameterType="com.simplegame.platform.bus.user.entity.User">
-		insert into user(id, username, password, type, create_time)
+		insert into user(id, username, password, type, games, create_time)
 		
-		values(#{id}, #{username}, #{password}, #{type}, #{createTime})
+		values(#{id}, #{username}, #{password}, #{type}, #{games}, #{createTime})
 	</insert>
 
 	<update id="updateUser" parameterType="com.simplegame.platform.bus.user.entity.User">
 		update user set
 	    password = #{password}
+	    ,games = ${games}
 	    
 	    where id = #{id}
 	</update>

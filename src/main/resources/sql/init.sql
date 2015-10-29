@@ -52,3 +52,16 @@ CREATE TABLE `server` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Table structure for app
+-- ----------------------------
+DROP TABLE IF EXISTS `app`;
+CREATE TABLE `app` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) COLLATE utf8_bin NOT NULL,
+  `key` varchar(64) COLLATE utf8_bin NOT NULL,
+  `username` varchar(64) COLLATE utf8_bin NOT NULL,
+  `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

@@ -46,4 +46,9 @@ public class ServerDaoImpl implements IServerDao {
 		return sqlSession.selectList("selectServerByAppId", appId);
 	}
 
+    @Override
+    public Server selectServerNewestByAppId(long appId) {
+        return sqlSession.selectOne("selectServerNewestByAppId", appId);
+    }
+
 }

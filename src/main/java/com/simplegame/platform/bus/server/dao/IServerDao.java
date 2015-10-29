@@ -21,4 +21,12 @@ public interface IServerDao {
 	
 	public List<Server> selectServerByAppId(long appId);
 	
+	/**
+	 * 获取最新，推荐服务器
+	 * 
+	 * @param appId
+	 * @return
+	 */
+	public Server selectServerNewestByAppId(long appId);
+	
 }
