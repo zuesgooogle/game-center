@@ -13,7 +13,7 @@ public class Md5Util {
 
 	private static final String[] hexDigits = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f" };
 
-	public static final String SECURE_KEY = "game-platform secure key";
+	public static final String SECURE_KEY = "game-center secure key";
 	
 	public static String md5To32(String value) {
 		StringBuffer stringBuffer = new StringBuffer("");

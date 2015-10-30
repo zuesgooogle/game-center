@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="UTF-8">
 
@@ -14,7 +16,7 @@
 	<link href="css/s4game-main.css" rel="stylesheet">
 	<link href="css/s4game-footer.css" rel="stylesheet">
 
-	<title>应用管理</title>
+	<title>APP 管理</title>
 
 </head>
 <body>
@@ -26,7 +28,7 @@
 	<div class="col-sm-10 mask">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title">应用管理</h3>
+				<h4 class="panel-title">APP 管理</h4>
 			</div>
 			<div class="panel-body">
 				<button type="button" class="btn btn-success" data-toggle="modal" id="addAppBtn"><span class="glyphicon glyphicon-plus">&nbsp;添加APP</span></button>
@@ -43,7 +45,7 @@
 							<th>操作</th>
 						</tr>
 					</thead>
-					<tbody id="serverBody">
+					<tbody id="appBody">
 						<c:forEach var="app"  items="${apps}" varStatus="s" >
 							<tr id="tr-${app.id}" <c:if test="${s.count % 2 == 0}">class="info"</c:if> >
 								<td>${app.id}</td>
@@ -53,9 +55,9 @@
 								<td>${app.createTime}</td>
 								<td>
 									<input type="hidden" id="${app.id}" value='${app}'>
-									<a class="server-edit" href="javascript:void(0)" data-id="${server.id}" title="编辑"><span class="glyphicon glyphicon-edit"></span></a>
+									<a class="app-edit" href="javascript:void(0)" data-id="${app.id}" title="编辑"><span class="glyphicon glyphicon-edit"></span></a>
 									&nbsp;
-									<a class="server-remove" href="javascript:void(0)" data-id="${server.id}"  title="删除"><span class="glyphicon glyphicon-remove"></span></a>
+									<a class="app-remove" href="javascript:void(0)" data-id="${app.id}"  title="删除"><span class="glyphicon glyphicon-remove"></span></a>
 								</td>
 							</tr>
 						</c:forEach>
@@ -74,25 +76,40 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">应用信息</h4>
+            <h4 class="modal-title" id="myModalLabel">APP 信息</h4>
           </div>
           <div class="modal-body">
-          	<form id="serverForm" role="form" class="form-horizontal" data-toggle="validator">
-				<fieldset>
-					<legend></legend>
+          	<form id="appForm" role="form" class="form-horizontal" data-toggle="validator">
 					<div class="form-group">
-						<label class="col-sm-4 control-label">ID</label> 
+						<label class="col-sm-2 control-label">APP ID</label> 
 						<div class="col-sm-8">
 							<input id="id" type="text" class="form-control" placeholder="服务器自动生成" disabled>
 						</div>
 					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">APP KEY</label> 
+						<div class="col-sm-8">
+							<input id="key" type="text" class="form-control" placeholder="服务器自动生成" disabled>
+						</div>
+					</div>
 					<div class="form-group">	
-						<label class="col-sm-4 control-label">名称</label> 
+						<label class="col-sm-2 control-label">APP 名称</label> 
 						<div class="col-sm-8">
 							<input id="name" type="text" class="form-control" required>
 						</div>
 					</div>
-				</fieldset>
+					<div class="form-group">	
+						<label class="col-sm-2 control-label">创建者</label> 
+						<div class="col-sm-8">
+							<input id="username" type="text" class="form-control" value="${pageContext.request.userPrincipal.name}" disabled/>
+						</div>
+					</div>
+					<div class="form-group">	
+						<label class="col-sm-2 control-label">创建时间</label> 
+						<div class="col-sm-8">
+							<input id="createTime" type="text" class="form-control" disabled>
+						</div>
+					</div>
 			</form>
           </div>
           <div class="modal-footer">
@@ -105,6 +122,6 @@
 
 	
 	<%@ include file="../footer.jsp"%>
-	<script src="/js/require.js" data-main="js/s4game/server"></script>
+	<script src="/js/require.js" data-main="js/s4game/app"></script>
 </body>
 </html>

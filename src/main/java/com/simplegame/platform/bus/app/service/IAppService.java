@@ -13,16 +13,14 @@ import com.simplegame.platform.bus.app.entity.App;
 
 public interface IAppService {
 
-    public void createApp(App app);
-    
-    public void updateApp(App app);
+    public void save(App app);
     
     /**
      * 需要判断，是否关联区服
      * 
      * @param id
      */
-    public void removeApp(long id);
+    public void remove(long id);
     
     public List<App> getAll();
     

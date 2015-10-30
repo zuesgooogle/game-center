@@ -12,7 +12,7 @@
 	<sql id="queryConditionApp">
 		<where>
 			<if test="id != null">AND id = #{id}</if>
-			<if test="name != null">AND name = #{name}</if>
+			<if test="name != null">AND `name` = #{name}</if>
 			<if test="username != null">AND username = #{username}</if>
 		</where>
 	</sql>
@@ -52,9 +52,9 @@
 	</select>
 	
 	<insert id="insertApp" parameterType="com.simplegame.platform.bus.app.entity.App">
-		insert into app(id, name, key, username, create_time)
+		insert into app(`name`, `key`, username, create_time)
 		
-		values(#{id}, #{name}, #{key}, #{username}, #{createTime})
+		values(#{name}, #{key}, #{username}, #{createTime})
 		
 		<selectKey keyProperty="id" resultType="int" order="AFTER">  
             SELECT LAST_INSERT_ID();  
@@ -63,7 +63,7 @@
 
 	<update id="updateApp" parameterType="com.simplegame.platform.bus.app.entity.App">
 		update app set
-	    name = #{name}
+	    `name` = #{name}
 	    
 	    where id = #{id}
 	</update>
