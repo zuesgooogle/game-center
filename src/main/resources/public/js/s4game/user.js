@@ -171,7 +171,7 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator' ], function($, bo
 			});
 		},
 		
-		isLogin() {
+		isLogin: function() {
 			var loginuser = $('#loginuser');
 			return loginuser != null && loginuser.val() != '';
 		},

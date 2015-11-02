@@ -22,19 +22,19 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json' ], functi
 	var server = {};
 	
 	$(function() {
-		$('#addServerBtn').click(function() {
+		$('body').on('click', '#addServerBtn', function() {
 			server.add();
 		});
 		
-		$('#updateServerBtn').click(function() {
+		$('body').on('click', '#updateServerBtn', function() {
 			server.update();
 		});
-
-		$('.server-edit').click(function() {
+		
+		$('body').on('click', '.server-edit', function() {
 			server.edit(this);
 		});
 		
-		$('.server-remove').click(function() {
+		$('body').on('click', '.server-remove', function() {
 			server.remove(this);
 		});
 	});
@@ -75,7 +75,7 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json' ], functi
 			});
 			
 			$.ajax({
-				url:  '/server/update',
+				url:  '/console/server/update',
 				type: 'POST',
 	            data:{params: $.toJSON(data)}, 
 
@@ -89,11 +89,49 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json' ], functi
 			.done(function(result) {
 				var json = jQuery.parseJSON( result );
 				if( json.ret == 0) {
-					window.location.href = "/server";
+					that.updateTable(json.data);
+					
+					$('#addModal').modal('hide');
+					utils.message("保存成功！");
 				} else {
 					utils.alert(json.msg);
 				}
 			});
+		},
+		
+		updateTable: function(data) {
+			var $tr = $('#tr-' + data.id);
+			var add = ($tr.length == 0);
+			if( add ) {
+				var count = $('#serverBody').find('tr').length + 1;
+				
+				$tr = $('<tr id="tr-'+ data.id +'"></tr>');
+				if( count % 2 == 0 ) {
+					$tr.addClass('info');
+				}
+			}else {
+				$tr.html('');
+			}
+
+			
+			$tr.append('<td>'+ data.id +'</td>');
+			$tr.append('<td>'+ data.name +'</td>');
+			$tr.append('<td>'+ data.serverIp +'</td>');
+			$tr.append('<td>'+ data.serverPort +'</td>');
+			$tr.append('<td>'+ data.mysqlIp +'</td>');
+			$tr.append('<td>'+ data.mysqlName +'</td>');
+			$tr.append('<td>'+ data.status +'</td>');
+			
+			var $action = $('<td></td>');
+			$action.append('<input type="hidden" id="'+ data.id +'" value='+ $.toJSON(data) +'>');
+			$action.append('<a class="server-edit"   href="javascript:void(0)" data-id="'+ data.id +'" title="编辑"><span class="glyphicon glyphicon-edit"></span></a> &nbsp;');
+			$action.append('<a class="server-remove" href="javascript:void(0)" data-id="'+ data.id +'" title="删除"><span class="glyphicon glyphicon-remove"></span></a>');
+
+			$tr.append($action);
+			
+			if( add ) {
+				$('tbody').prepend($tr);
+			}
 		},
 		
 		edit: function(btn) {
@@ -126,7 +164,20 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json' ], functi
 			var form = $('#serverForm');
 			var inputs = form.find('input');
 			$.each(inputs, function(index, element) {
-				$(element).val("");
+				if( $(element).attr("name") != "status" ) {
+					$(element).val("");
+				}
+			});
+			
+			//status radio
+			var radio = $('input:radio[name="status"]');
+			$.each(radio, function(index, element) {
+				var $el = $(element);
+				if( $el.val() == "1" ) {
+					$el.attr("checked", "checked");
+				} else {
+					$el.removeAttr("checked");
+				}
 			});
 		},
 		
@@ -136,7 +187,7 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json' ], functi
 			bootbox.confirm('您确认要删除吗？', function(btn) {
 				if( btn ) {
 					$.ajax({
-						url:  '/server/remove',
+						url:  '/console/server/remove',
 						type: 'POST',
 			            data:{id: serverId}, 
 

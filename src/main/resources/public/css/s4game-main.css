@@ -39,3 +39,12 @@ body {
 	color: #3c763d;
 	font-weight:bold;
 }
+
+.bb-alert {
+    position:fixed;
+    top:0;
+    right:50%;
+    margin-bottom:0;
+    font-size:1.2em;
+    z-index:2000;
+}

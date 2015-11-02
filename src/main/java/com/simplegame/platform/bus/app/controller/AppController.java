@@ -6,7 +6,7 @@ import javax.annotation.Resource;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,6 +23,7 @@ import com.simplegame.platform.bus.app.service.IAppService;
  *
  */
 @RestController
+@RequestMapping(value = "/console")
 public class AppController {
 
     private Logger LOG = LogManager.getLogger(getClass());
@@ -30,18 +31,16 @@ public class AppController {
     @Resource
     private IAppService appService;
     
-    @PreAuthorize("hasAnyRole('ADMIN')")
-    @RequestMapping("/app")
-    public ModelAndView list() {
+    @RequestMapping(value = "/app")
+    public ModelAndView list(Model model) {
         ModelAndView view = new ModelAndView("console/app");
-        
+
         List<App> apps = appService.getAll();
         view.addObject("apps", apps);
-        
+
         return view;
     }
-    
-    @PreAuthorize("hasAnyRole('ADMIN')")
+  
     @RequestMapping("/app/update")
     public String update(String params) {
         LOG.info("app update: {}", params);
@@ -52,10 +51,10 @@ public class AppController {
         appService.save(app);
         
         result.put("ret", 0);
+        result.put("data", app);
         return result.toJSONString();
     }
     
-    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping("/app/remove")
     public String remove(long id) {
         JSONObject result = new JSONObject();

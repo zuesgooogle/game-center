@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,6 +22,7 @@ import com.simplegame.platform.bus.server.service.IServerService;
  *
  */
 @RestController
+@RequestMapping(value = "/console")
 public class ServerController {
 
 	private Logger LOG = LogManager.getLogger(getClass());
@@ -30,7 +30,6 @@ public class ServerController {
     @Resource
     private IServerService serverService;
     
-    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping("/server")
     public ModelAndView list() {
         ModelAndView view = new ModelAndView("console/server");
@@ -41,7 +40,6 @@ public class ServerController {
         return view;
     }
     
-    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping("/server/update")
     public String update(String params) {
     	LOG.info("server update: {}", params);
@@ -52,10 +50,10 @@ public class ServerController {
     	serverService.save(server);
     	
     	result.put("ret", 0);
+    	result.put("data", server);
     	return result.toJSONString();
     }
     
-    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping("/server/remove")
     public String remove(long id) {
         JSONObject result = new JSONObject();
@@ -66,7 +64,6 @@ public class ServerController {
         return result.toJSONString();
     }
     
-    @PreAuthorize("hasAnyRole('USER')")
     @RequestMapping("/selectzone")
     public ModelAndView selectzone() {
         ModelAndView view = new ModelAndView("selectzone");

@@ -1,46 +1,43 @@
 require.config({
 	shim : {
-        'bootstrap' : ['jquery'],
-        'bootbox'   : ['jquery'],
-        'json'		: ['jquery'],
-        'validator' : ['jquery'],
+		'bootstrap' : ['jquery'],
         'utils'     : ['jquery']
     },
     
     
 	paths: {
-		'jquery'	: '../lib/jquery.min',
-		'json'		: '../lib/jquery.json.min',
 		'bootstrap'	: '../lib/bootstrap.min',
-  		'validator' : '../lib/validator.min',
-  		'bootbox'   : '../lib/bootbox.min',
+		'bootbox'   : '../lib/bootbox.min',
+		'validator' : '../lib/validator.min',
+		'json'		: '../lib/jquery.json.min',
   		'utils'     : '../lib/utils'
 　　}
 });
 
-define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json' ], function($, bootbox, utils) {
+define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json'], function($, bootbox, utils) {
 	var app = {};
 	
 	$(function() {
-		$('#addAppBtn').click(function() {
+		/** register event */
+		$('body').on('click', '#addAppBtn', function() {
 			app.add();
 		});
 		
-		$('#updateAppBtn').click(function() {
+		$('body').on('click', '#updateAppBtn', function() {
 			app.update();
 		});
 
-		$('.app-edit').click(function() {
+		$('body').on('click', '.app-edit', function() {
 			app.edit(this);
 		});
 		
-		$('.app-remove').click(function() {
+		$('body').on('click', '.app-remove', function() {
 			app.remove(this);
 		});
 	});
 	
 	app = {	
-			
+
 		add: function() {
 			this.cleanData();
 			$('#username').val($('#loginuser').val());
@@ -63,15 +60,15 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json' ], functi
 			var data = {};
 			var inputs = form.find('input');
 			$.each(inputs, function(index, element) {
-				var $el = $(element);
+				var $tr = $(element);
 				
-				if( $el.attr('id') != null ) {
-					data[$el.attr('id')] = $el.val();
+				if( $tr.attr('id') != null ) {
+					data[$tr.attr('id')] = $tr.val();
 				}
 			});
 			
 			$.ajax({
-				url:  '/app/update',
+				url:  '/console/app/update',
 				type: 'POST',
 	            data:{params: $.toJSON(data)}, 
 
@@ -85,11 +82,46 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json' ], functi
 			.done(function(result) {
 				var json = jQuery.parseJSON( result );
 				if( json.ret == 0) {
-					window.location.href = "/app";
+					that.updateTable(json.data);
+					
+					$('#appModal').modal('hide');
+					utils.message('保存成功！');
 				} else {
 					utils.alert(json.msg);
 				}
 			});
+		},
+		
+		updateTable: function(data) {
+			var $tr = $('#tr-' + data.id);
+			var add = ($tr.length == 0);
+			if( add ) {
+				var count = $('#appBody').find('tr').length + 1;
+				
+				$tr = $('<tr id="tr-'+ data.id +'"></tr>');
+				if( count % 2 == 0 ) {
+					$tr.addClass('info');
+				}
+			}else {
+				$tr.html('');
+			}
+			
+			$tr.append('<td>'+ data.id +'</td>');
+			$tr.append('<td>'+ data.key +'</td>');
+			$tr.append('<td>'+ data.name +'</td>');
+			$tr.append('<td>'+ data.username +'</td>');
+			$tr.append('<td>'+ new Date(data.createTime).format("yyyy-MM-dd HH:mm:ss") +'</td>');
+			
+			var $action = $('<td></td>');
+			$action.append('<input type="hidden" id="'+ data.id +'" value='+ $.toJSON(data) +'>');
+			$action.append('<a class="app-edit"   href="javascript:void(0)" data-id="'+ data.id +'" title="编辑"><span class="glyphicon glyphicon-edit"></span></a> &nbsp;');
+			$action.append('<a class="app-remove" href="javascript:void(0)" data-id="'+ data.id +'" title="删除"><span class="glyphicon glyphicon-remove"></span></a>');
+			
+			$tr.append($action);
+			
+			if( add ) {
+				$('tbody').prepend($tr);
+			}
 		},
 		
 		edit: function(btn) {
@@ -122,7 +154,7 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json' ], functi
 			bootbox.confirm('您确认要删除吗？', function(btn) {
 				if( btn ) {
 					$.ajax({
-						url:  '/app/remove',
+						url:  '/console/app/remove',
 						type: 'POST',
 			            data:{id: appId}, 
 
@@ -136,7 +168,7 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json' ], functi
 					.done(function(result) {
 						var json = jQuery.parseJSON( result );
 						if( json.ret == 0) {
-							window.location.href = "/app";
+							
 						} else {
 							utils.alert(json.msg);
 						}

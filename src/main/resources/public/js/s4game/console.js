@@ -1,29 +1,55 @@
 require.config({
 	shim : {
-        'bootstrap' : ['jquery'],
-        'bootbox'   : ['jquery'],
-        'validator' : ['jquery'],
         'utils'     : ['jquery']
     },
     
     
 	paths: {
 		'jquery'	: '../lib/jquery.min',
-		'bootstrap'	: '../lib/bootstrap.min',
-  		'validator' : '../lib/validator.min',
-  		'bootbox'   : '../lib/bootbox.min',
-  		'utils'     : '../lib/utils'
+		'bootbox'	: '../lib/bootbox.min',
+  		'utils'     : '../lib/utils',
+  		'app'		: 'app',
+  		'server'	: 'server'
 　　}
 });
 
-define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator' ], function($, bootbox, utils) {
+define(['jquery', 'bootbox', 'utils', 'app', 'server' ], function($, bootbox, utils) {
 	var console = {};
 	
 	$(function() {
-		
+		$('.menu').click(function() {
+			console.load(this);
+		});
+
 	});
 	
 	console = {	
+			
+		load: function(menu) {
+			var url = $(menu).attr("data-url");
+			if( url == null ) {
+				return;
+			}
+			
+			$.ajax({
+				url:  url,
+				type: 'POST',
+				dataType: 'html',
+				async: true,
+				data: {
+					
+				},
+				beforeSend: function(xhr) {
+					utils.mask();
+				},
+				complete: function(result) {
+					utils.unmask();
+				}
+			})
+			.done(function(result) {
+				$('#main').html(result);
+			});
+		},
 			
 		login: function() {
 			var that = this;

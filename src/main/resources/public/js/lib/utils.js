@@ -3,7 +3,9 @@ require.config({
 	baseUrl: 'js/lib/',
 	
 	shim : {
+		'bootstrap' : ['jquery'],
         'loadmask'  : ['jquery'],
+        'validator' : ['jquery'],
         'bootbox'   : ['jquery']
     },
     
@@ -11,6 +13,7 @@ require.config({
 	paths: {
 　　		'jquery'	: 'jquery.min',
   		'loadmask'  : 'jquery.loadmask.min',
+  		'bootstrap'	: 'bootstrap.min',
   		'bootbox'   : 'bootbox.min'
 　　}
 });
@@ -19,7 +22,7 @@ define(['jquery', 'bootbox', 'loadmask'], function($, bootbox) {
 
 	$(function() {
 		$('a.active').click(function() {
-			$(this).parent().children('a.tree').toggle(300);
+			$(this).parent().children('a.menu').toggle(300);
 		});
 		
 		$('div.panel-heading').click(function() {
@@ -52,6 +55,12 @@ define(['jquery', 'bootbox', 'loadmask'], function($, bootbox) {
 			
 		alert: function(message) {
 			bootbox.alert(message);
+		},
+		
+		message: function(text) {
+			var elem = $('#messageBox');
+			elem.find("span").html(text);
+	        elem.delay(100).slideDown().delay(4000).fadeOut();
 		}
 		
 	};
