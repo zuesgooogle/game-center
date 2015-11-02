@@ -1,6 +1,7 @@
 require.config({
 	shim : {
         'bootstrap' : ['jquery'],
+        "common" 	: ['jquery'],
         'select'    : ['jquery']
     },
     
@@ -11,13 +12,13 @@ require.config({
 　　		'bootstrap'	: '../lib/bootstrap.min',
 　　		'validator' : '../lib/validator.min',
 　　		'select'    : '../lib/bootstrap-select.min',
-  		'utils'     : '../lib/utils',
+  		'common'     : 'common',
   		'user'		: 'user'
 　　}
 });
 
-define(['jquery', 'bootbox', 'utils', 'user', 'select', 'bootstrap', 'validator'], function($, bootbox, utils, user) {
-	utils.navActive();
+define(['jquery', 'bootbox', 'common', 'user', 'select', 'bootstrap', 'validator'], function($, bootbox, common, user) {
+	common.navActive();
 	
 	var recharge = {};
 	

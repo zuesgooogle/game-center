@@ -11,28 +11,29 @@ require.config({
     
     
 	paths: {
-　　		'jquery'	: 'jquery.min',
-  		'loadmask'  : 'jquery.loadmask.min',
-  		'bootstrap'	: 'bootstrap.min',
-  		'bootbox'   : 'bootbox.min'
+　　		'jquery'	: '../lib/jquery.min',
+  		'loadmask'  : '../lib/jquery.loadmask.min',
+  		'bootstrap'	: '../lib/bootstrap.min',
+  		'bootbox'   : '../lib/bootbox.min'
 　　}
 });
 
 define(['jquery', 'bootbox', 'loadmask'], function($, bootbox) {
-
+	var common = {};
+	
 	$(function() {
+		
 		$('a.active').click(function() {
 			$(this).parent().children('a.menu').toggle(300);
 		});
 		
-		$('div.panel-heading').click(function() {
+		$('body').on('click', 'div.panel-heading', function() {
 			$(this).parent().children('div.panel-body').toggle(300);
 		});
 	});
 	
-	var utils = {};
-	
-	utils = {
+		
+	common = {
 		navActive: function() {
 			var tag = $("#navTag");
 			if( tag == undefined ) {
@@ -60,7 +61,7 @@ define(['jquery', 'bootbox', 'loadmask'], function($, bootbox) {
 		message: function(text) {
 			var elem = $('#messageBox');
 			elem.find("span").html(text);
-	        elem.delay(100).slideDown().delay(4000).fadeOut();
+	        elem.delay(100).slideDown().delay(3000).fadeOut();
 		}
 		
 	};
@@ -81,5 +82,8 @@ define(['jquery', 'bootbox', 'loadmask'], function($, bootbox) {
 	    return fmt;
 	};
 	
-	return utils;
+	common.navActive();
+
+	
+	return common;
 });

@@ -1,19 +1,15 @@
 require.config({
 	shim : {
         "bootstrap" 		: ['jquery'],
-        "utils" 			: ['jquery'],
-        'bootstrap-select' 	: ['jquery']
+        "common" 			: ['jquery']
     },
-    
-    
 	paths: {
 　　		"jquery"			: "lib/jquery.min",
 　　		"bootstrap"			: "lib/bootstrap.min",
-　　		'bootstrap-select' 	: 'lib/bootstrap-select.min',
-  		"utils"  			: "lib/utils"
+　　		"common"  			: "s4game/common"
 　　}
 });
 
-require(['jquery', 'bootstrap', 'utils', 'bootstrap-select'], function ($, bootstrap, utils){
-	utils.navActive();
+require(['jquery', 'bootstrap', 'common'], function ($, bootstrap, common){
+	
 });

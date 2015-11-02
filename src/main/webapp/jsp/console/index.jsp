@@ -25,7 +25,7 @@
 	<div class="container-fluid">
 		<%@ include file="menu.jsp"%>
 		
-		<div id="main" class="col-sm-10 mask">
+		<div id="main" class="col-sm-10">
 
 			<div class="panel panel-primary">
 				<div class="panel-heading">

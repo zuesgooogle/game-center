@@ -1,19 +1,19 @@
 require.config({
 	shim : {
-        'utils'     : ['jquery']
+        'common'     : ['jquery']
     },
     
     
 	paths: {
 		'jquery'	: '../lib/jquery.min',
 		'bootbox'	: '../lib/bootbox.min',
-  		'utils'     : '../lib/utils',
+  		'common'     : 'common',
   		'app'		: 'app',
   		'server'	: 'server'
 　　}
 });
 
-define(['jquery', 'bootbox', 'utils', 'app', 'server' ], function($, bootbox, utils) {
+define(['jquery', 'bootbox', 'common', 'app', 'server' ], function($, bootbox, common) {
 	var console = {};
 	
 	$(function() {
@@ -40,10 +40,10 @@ define(['jquery', 'bootbox', 'utils', 'app', 'server' ], function($, bootbox, ut
 					
 				},
 				beforeSend: function(xhr) {
-					utils.mask();
+					$('#main').mask();
 				},
 				complete: function(result) {
-					utils.unmask();
+					$('#main').unmask();
 				}
 			})
 			.done(function(result) {
@@ -72,10 +72,10 @@ define(['jquery', 'bootbox', 'utils', 'app', 'server' ], function($, bootbox, ut
 					password: $('#password').val()
 				},
 				beforeSend: function(xhr) {
-					utils.mask();
+					common.mask();
 				},
 				complete: function(result) {
-					utils.unmask();
+					common.unmask();
 				}
 			})
 			.done(function(result) {
@@ -122,10 +122,10 @@ define(['jquery', 'bootbox', 'utils', 'app', 'server' ], function($, bootbox, ut
 					password: $('#password').val()
 				},
 				beforeSend: function(xhr) {
-					utils.mask();
+					common.mask();
 				},
 				complete: function() {
-					utils.unmask();
+					common.unmask();
 				}
 			})
 			.done(function(result) {

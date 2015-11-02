@@ -4,7 +4,7 @@ require.config({
         'bootbox'   : ['jquery'],
         'json'		: ['jquery'],
         'validator' : ['jquery'],
-        'utils'     : ['jquery']
+        'common'     : ['jquery']
     },
     
     
@@ -14,11 +14,11 @@ require.config({
 		'bootstrap'	: '../lib/bootstrap.min',
   		'validator' : '../lib/validator.min',
   		'bootbox'   : '../lib/bootbox.min',
-  		'utils'     : '../lib/utils'
+  		'common'     : 'common'
 　　}
 });
 
-define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json' ], function($, bootbox, utils) {
+define(['jquery', 'bootbox', 'common', 'bootstrap', 'validator', 'json' ], function($, bootbox, common) {
 	var server = {};
 	
 	$(function() {
@@ -60,7 +60,7 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json' ], functi
 			
 			var status = $('input:radio[name="status"]:checked').val();
 			if( status == null ) {
-				utils.alert('请选择服务器状态');
+				common.alert('请选择服务器状态');
 				return;
 			}
 			
@@ -80,10 +80,10 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json' ], functi
 	            data:{params: $.toJSON(data)}, 
 
 				beforeSend: function(xhr) {
-					utils.mask();
+					common.mask();
 				},
 				complete: function(result) {
-					utils.unmask();
+					common.unmask();
 				}
 			})
 			.done(function(result) {
@@ -92,9 +92,9 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json' ], functi
 					that.updateTable(json.data);
 					
 					$('#addModal').modal('hide');
-					utils.message("保存成功！");
+					common.message("保存成功！");
 				} else {
-					utils.alert(json.msg);
+					common.alert(json.msg);
 				}
 			});
 		},
@@ -192,10 +192,10 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json' ], functi
 			            data:{id: serverId}, 
 
 						beforeSend: function(xhr) {
-							utils.mask();
+							common.mask();
 						},
 						complete: function(result) {
-							utils.unmask();
+							common.unmask();
 						}
 					})
 					.done(function(result) {
@@ -203,7 +203,7 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json' ], functi
 						if( json.ret == 0) {
 							window.location.href = "/server";
 						} else {
-							utils.alert(json.msg);
+							common.alert(json.msg);
 						}
 					});
 				}

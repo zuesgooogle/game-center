@@ -1,7 +1,7 @@
 require.config({
 	shim : {
 		'bootstrap' : ['jquery'],
-        'utils'     : ['jquery']
+        'common'     : ['jquery']
     },
     
     
@@ -10,11 +10,11 @@ require.config({
 		'bootbox'   : '../lib/bootbox.min',
 		'validator' : '../lib/validator.min',
 		'json'		: '../lib/jquery.json.min',
-  		'utils'     : '../lib/utils'
+  		'common'     : 'common'
 　　}
 });
 
-define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json'], function($, bootbox, utils) {
+define(['jquery', 'bootbox', 'common', 'bootstrap', 'validator', 'json'], function($, bootbox, common) {
 	var app = {};
 	
 	$(function() {
@@ -73,10 +73,10 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json'], functio
 	            data:{params: $.toJSON(data)}, 
 
 				beforeSend: function(xhr) {
-					utils.mask();
+					common.mask();
 				},
 				complete: function(result) {
-					utils.unmask();
+					common.unmask();
 				}
 			})
 			.done(function(result) {
@@ -85,9 +85,9 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json'], functio
 					that.updateTable(json.data);
 					
 					$('#appModal').modal('hide');
-					utils.message('保存成功！');
+					common.message('保存成功！');
 				} else {
-					utils.alert(json.msg);
+					common.alert(json.msg);
 				}
 			});
 		},
@@ -159,10 +159,10 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json'], functio
 			            data:{id: appId}, 
 
 						beforeSend: function(xhr) {
-							utils.mask();
+							common.mask();
 						},
 						complete: function(result) {
-							utils.unmask();
+							common.unmask();
 						}
 					})
 					.done(function(result) {
@@ -170,7 +170,7 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator', 'json'], functio
 						if( json.ret == 0) {
 							
 						} else {
-							utils.alert(json.msg);
+							common.alert(json.msg);
 						}
 					});
 				}

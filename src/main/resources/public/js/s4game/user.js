@@ -3,7 +3,7 @@ require.config({
         'bootstrap' : ['jquery'],
         'bootbox'   : ['jquery'],
         'validator' : ['jquery'],
-        'utils'     : ['jquery']
+        'common'    : ['jquery']
     },
     
     
@@ -12,11 +12,11 @@ require.config({
 		'bootstrap'	: '../lib/bootstrap.min',
 　　		'validator' : '../lib/validator.min',
   		'bootbox'   : '../lib/bootbox.min',
-  		'utils'     : '../lib/utils'
+  		'common'     : 'common'
 　　}
 });
 
-define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator' ], function($, bootbox, utils) {
+define(['jquery', 'bootbox', 'common', 'bootstrap', 'validator' ], function($, bootbox, common) {
 	var user = {};
 	
 	$(function() {
@@ -58,10 +58,10 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator' ], function($, bo
 					password: $('#password').val()
 				},
 				beforeSend: function(xhr) {
-					utils.mask();
+					common.mask();
 				},
 				complete: function(result) {
-					utils.unmask();
+					common.unmask();
 				}
 			})
 			.done(function(result) {
@@ -101,10 +101,10 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator' ], function($, bo
 					password: $('#password').val()
 				},
 				beforeSend: function(xhr) {
-					utils.mask();
+					common.mask();
 				},
 				complete: function(result) {
-					utils.unmask();
+					common.unmask();
 				}
 			})
 			.done(function(result) {
@@ -145,10 +145,10 @@ define(['jquery', 'bootbox', 'utils', 'bootstrap', 'validator' ], function($, bo
 					password: $('#password').val()
 				},
 				beforeSend: function(xhr) {
-					utils.mask();
+					common.mask();
 				},
 				complete: function() {
-					utils.unmask();
+					common.unmask();
 				}
 			})
 			.done(function(result) {
