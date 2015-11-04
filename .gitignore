@@ -4,4 +4,3 @@
 .classpath
 *.prefs
 *.log
-src/main/resources/config/application.properties
